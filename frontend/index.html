@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Toko madura</title>
 
     <!-- CSS-->
-    <link href="/static/css/style.css" />
+    <link href="/frontend/static/css/style.css" rel="stylesheet" />
+    <link href="/frontend/static/css/tailwind.css" type="text/tailwindcss" />
     <script
         src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link href="css/tailwind.css" type="text/tailwindcss" />
@@ -16,15 +17,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS-->
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                },
+                screens: {
+                    "hp": "400px",
+                    'tablet': '640px',
+                    'laptop': '1024px',
+                    'desktop': '1280px',
+                }
+            }
+        }
+    </script>
+
 </head>
 
 <body>
 
     <!-- navbar-->
-    <nav class="bg-gray-100">
+    <nav class="bg-gray-100 w-full">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div class="absolute inset-y-0 left-0 flex items-center hp:hidden">
                     <!-- Mobile menu button-->
                     <button type="button"
                         class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -48,7 +64,8 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex items-center justify-between sm:items-stretch sm:justify-start cursor-pointer" id="goHome">
+                <div class="flex items-center justify-between sm:items-stretch sm:justify-start cursor-pointer"
+                    id="goHome">
                     <div class="flex items-center justify-center">
                         <img class="mt-2" width="100" src="/static/assets/logomadura-removebg-preview.png"
                             alt="Your Company">
@@ -61,9 +78,9 @@
                         <i class="bi bi-search m-auto px-2"></i>
                     </div>
                 </div>
-                <div class="right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3">
-                    <a href="/login" data-link class="rounded-md border-2 border-black px-4 py-2 font-bold">Login</a>
-                    <a href="/register" data-link
+                <div class="right-0 hidden items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3 hp:flex">
+                    <a href="/login" class="rounded-md border-2 border-black px-4 py-2 font-bold">Login</a>
+                    <a href="/register"
                         class="bg-black text-white px-4 py-2 rounded-md font-bold border-2 ">Register</a>
                 </div>
             </div>
@@ -77,8 +94,44 @@
             </div>
         </div>
     </nav>
-
     <!-- navbar end-->
+
+     <!-- Carousel wrapper -->
+     <div id="controls-carousel" class="relative w-full" data-carousel="static">
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://placehold.co/1500x400" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                <img src="https://placehold.co/1500x400" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="https://placehold.co/1500x400" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+        </div>
+     <!-- Carousel wrapper end -->
+
 
     <div id="app"></div>
 
