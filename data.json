@@ -1,0 +1,332 @@
+ [
+    {
+        "id": 1,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":30,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":10,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":40,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":40,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":10,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":40,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":10,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":60,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":10,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":30,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 2,
+        "location": "Madura",
+        "price": 10000,
+        "discount":50,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":60,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":80,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":80,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Jajanan madura",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":40,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    }
+]
