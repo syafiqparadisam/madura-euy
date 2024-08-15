@@ -46,12 +46,18 @@ export default class extends AbstractView {
 
 
             <!-- Promo -->
-            <div class="flex w-full px-10 py-10 items-center justify-between ">
+            <div class="flex w-4/5 mx-auto px-10 py-10 items-center justify-between ">
+                <div class="w-1/5">
+                    <h2 class="font-bold text-xl">Promo hari ini</h2>
+                    <h5 class="text-sm">Dapatkan produk eksklusif kami dengan diskon spesial hanya untuk hari ini! Stok terbatas, jadi jangan sampai ketinggalan.</h5>
+                </div>
+                <div class="flex gap-10 justify-center items-center border-black overflow-scroll border-opacity-50 p-4 rounded-lg" id="promoProduct">
+                </div>
             </div>
             <!-- Promo end-->
 
             <!-- full card product -->
-            <section class="flex w-full justify-around items-center flex-wrap my-10 gap-0 sm:px-20 px-0" id="cardProduct">
+            <section class="flex w-full justify-around items-center flex-wrap my-10 gap-3 sm:px-20 px-0" id="bigProduct">
             </section>
             <!-- full card product-->
         `;

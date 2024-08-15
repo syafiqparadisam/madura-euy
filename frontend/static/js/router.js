@@ -1,4 +1,4 @@
-import { showHomeProduct } from "./home.js";
+import { showBigProduct, showPromoProduct } from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
@@ -59,8 +59,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     router();
-    await showHomeProduct()
+    $("#promoProduct").css("width", "400px")
+    await showBigProduct()
+    await showPromoProduct()
 });
+
 
 $("#goHome").on("click", () => {
     window.location.href = "/"
