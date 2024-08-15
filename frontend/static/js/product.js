@@ -1,9 +1,9 @@
 let products = [];
 
-async function showProductCart() {
+async function showProductCart(id) {
   const data = await fetch("http://localhost:3000/data.json")
     
-  const products = await data.json();
+  const products = await data.json(id);
 
   products.map((data) => {
     let starsHtml = "";
