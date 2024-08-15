@@ -15,10 +15,11 @@ export async function showHomeProduct() {
         starsHtml += `<i class="bi bi-star"></i>`;
       }
   
-      document.getElementById("cardProduct").innerHTML = `
-          <div class="flex flex-col rounded-md cursor-pointer cardProducts">
+      $("#cardProduct").append(`
+          <a href="product/${data.id}" class="nav__link gap-8 flex flex-col rounded-md cursor-pointer cardProducts" data-link>
+            <div class="">
               <div class="w-full">
-                  <img src="https://placehold.co/200x200" width= class="rounded-md" />
+                  <img src="${data.image[0]}" width= class="rounded-md" />
               </div>
               <div class="flex flex-col w-full flex-wrap">
                   <div class="flex flex-col ">
@@ -35,17 +36,16 @@ export async function showHomeProduct() {
                       <p class="ml-2 font-bold">${data.rating}.0</p>
                   </div>
               </div>
-          </div>`;
+          </div>
+          </a>
+          `
+          )
     });
 }
 
-function toRupiah() {
+function toRupiah(price) {
     return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
       }).format(price);
-}
-
-function navigateProduct(id) {
-    window.location.replace("/product/" + id)
 }
