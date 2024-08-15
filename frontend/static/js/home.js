@@ -71,18 +71,6 @@ export async function showSmallProduct() {
           </div>
           </a>
       `)
-    // $("#smallProduct").append(`
-    //   <a href="product/${data.id}" class="nav_link" data-link>
-    //     <div class="shadow-md flex flex-col w-3/5 p-3 rounded-xl">
-    //         <div class="w-full flex flex-col">
-    //             <img src="${data.image[0]}" class="rounded-lg"/>
-    //         </div>
-    //         <div class="flex flex-col justify-center w-full flex-wrap text-center">
-    //             <h1 class="font-bold sm:text-md text-sm mx-5 mt-2">${data.title}</h1>
-    //         </div>
-    //     </div>
-    // </a>
-    //   `);
   });
 }
 
@@ -90,7 +78,8 @@ export async function showPromoProduct() {
   const data = await fetch("http://localhost:3000/data.json");
 
   const products = await data.json();
-  const promoProducts = products.filter((product) => product.price <= 5000);
+  const promoProducts = products.filter((product) => product.price < 9000);
+  console.log(promoProducts)
 
   promoProducts.map((data) => {
     $("#promoProduct").append(`
@@ -101,8 +90,8 @@ export async function showPromoProduct() {
             </div>
             <div class="flex flex-col w-full flex-wrap">
                 <div class="flex flex-col items-center">
-                    <h1 class="font-bold text-lg">${data.title}</h1>
-                    <p class="lh-1 text-lg font-medium">
+                    <h1 class="font-bold text-md">${data.title}</h1>
+                    <p class="lh-1 text-sm font-medium">
                       ${toRupiah(data.price)}
                     </p>
                 </div>

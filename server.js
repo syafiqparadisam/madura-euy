@@ -9,7 +9,6 @@ app.get("/data.json", (req,res) => {
     res.sendFile(path.resolve(__dirname, "data.json"))
 })
 
-
 // Route for home page
 app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));

@@ -47,7 +47,7 @@
         "id": 3,
         "title": "Gula pasir",
         "image": [
-            "/frontend/static/assets/products/gula/gula.png",
+            "/static/assets/products/gula/gula1.png",
             "https://placehold.co/100x100",
             "https://placehold.co/100x100",
             "https://placehold.co/100x100"

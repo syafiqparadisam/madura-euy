@@ -50,7 +50,7 @@ export default class extends AbstractView {
             <!-- Small Products end -->
 
             <!-- Promo -->
-            <section class="flex w-4/5 mx-auto px-10 py-10 items-center justify-between ">
+            <section class="flex w-4/5 mx-auto px-10 py-10 items-center justify-between shadow-lg rounded-xl">
                 <div class="w-1/5">
                     <h2 class="font-bold text-xl">Promo hari ini</h2>
                     <h5 class="text-sm">Dapatkan produk eksklusif kami dengan diskon spesial hanya untuk hari ini!</h5>

@@ -14,15 +14,17 @@
 </head>
 
 <body>
-    <div class="flex h-screen flex-col w-full justify-center items-center">
+    <div class="flex h-screen flex-col flex-wrap w-full justify-center items-center">
         <img src="https://res.cloudinary.com/dktwq4f3f/image/upload/v1716340580/notfound_s2tqyt.jpg" width="500px"
             class="mt-14" />
-        <p class="font-bold text-2xl">Not Found</p>
-        <button variant="contained" class="py-2 mt-4 px-8 bg-black font-bold text-white rounded-lg text-center"
-            onclick="goHome()">
-            <i class="bi bi-arrow-left"></i>
-            Back
-        </button>
+        <div class="flex flex-col w-1/5 flex-wrap justify-center text-center items-center">
+
+            <h1 class="font-bold text-3xl">Not Found</d>
+                <button class="py-2 mt-4 px-6 bg-black font-bold text-white rounded-lg text-center text-md" onclick="goHome()">
+                    <i class="bi bi-arrow-left"></i>
+                    Back
+                </button>
+        </div>
     </div>
 
     <script>
