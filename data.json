@@ -1,7 +1,7 @@
  [
     {
         "id": 1,
-        "title": "Jajanan madura",
+        "title": "Rokok",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -23,7 +23,7 @@
     },
     {
         "id": 2,
-        "title": "Jajanan madura",
+        "title": "Beras",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -32,7 +32,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 18000,
         "discount":10,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -45,16 +45,16 @@
     },
     {
         "id": 3,
-        "title": "Jajanan madura",
+        "title": "Gula pasir",
         "image": [
-            "https://placehold.co/200x200",
+            "/frontend/static/assets/products/gula/gula.png",
             "https://placehold.co/100x100",
             "https://placehold.co/100x100",
             "https://placehold.co/100x100"
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 7000,
         "discount":40,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -67,7 +67,7 @@
     },
     {
         "id": 4,
-        "title": "Jajanan madura",
+        "title": "Minyak",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -76,7 +76,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 20000,
         "discount":40,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -89,7 +89,7 @@
     },
     {
         "id": 5,
-        "title": "Jajanan madura",
+        "title": "Terigu",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -98,7 +98,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 15000,
         "discount":10,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -111,7 +111,7 @@
     },
     {
         "id": 6,
-        "title": "Jajanan madura",
+        "title": "Telur",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -120,7 +120,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 12500,
         "discount":40,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -133,7 +133,7 @@
     },
     {
         "id": 7,
-        "title": "Jajanan madura",
+        "title": "Pasta gigi kodomo",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -142,7 +142,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 13000,
         "discount":10,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -155,7 +155,7 @@
     },
     {
         "id": 8,
-        "title": "Jajanan madura",
+        "title": "Galon",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -164,7 +164,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 7000,
         "discount":60,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -177,7 +177,7 @@
     },
     {
         "id": 9,
-        "title": "Jajanan madura",
+        "title": "Okky jelly",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -186,7 +186,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 2000,
         "discount":10,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -199,7 +199,7 @@
     },
     {
         "id": 10,
-        "title": "Jajanan madura",
+        "title": "Teh pucuk",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -208,7 +208,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 3500,
         "discount":30,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -221,7 +221,7 @@
     },
     {
         "id": 11,
-        "title": "Jajanan madura",
+        "title": "Obat nyamuk",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -230,7 +230,7 @@
         ],
         "rating": 2,
         "location": "Madura",
-        "price": 10000,
+        "price": 5000,
         "discount":50,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -243,7 +243,7 @@
     },
     {
         "id": 12,
-        "title": "Jajanan madura",
+        "title": "Pakan burung",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -252,7 +252,7 @@
         ],
         "rating": 5,
         "location": "Madura",
-        "price": 10000,
+        "price": 21000,
         "discount":60,
         "description": "lorem ipsum",
         "soldTotal": 100,
@@ -265,7 +265,7 @@
     },
     {
         "id": 13,
-        "title": "Jajanan madura",
+        "title": "Hilo sachet",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -287,7 +287,7 @@
     },
     {
         "id": 14,
-        "title": "Jajanan madura",
+        "title": "Wafer nabati",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
@@ -309,7 +309,29 @@
     },
     {
         "id": 15,
-        "title": "Jajanan madura",
+        "title": "lpg",
+        "image": [
+            "https://placehold.co/200x200",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100",
+            "https://placehold.co/100x100"
+        ],
+        "rating": 5,
+        "location": "Madura",
+        "price": 10000,
+        "discount":40,
+        "description": "lorem ipsum",
+        "soldTotal": 100,
+        "stock": 999,
+        "variant": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    {
+        "id": 16,
+        "title": "Tisu",
         "image": [
             "https://placehold.co/200x200",
             "https://placehold.co/100x100",
