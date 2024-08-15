@@ -85,8 +85,8 @@ export async function showPromoProduct() {
             </div>
             <div class="flex flex-col w-full flex-wrap">
                 <div class="flex flex-col items-center">
-                    <h1 class="font-bold text-sm hp:text-md ">${data.title}</h1>
-                    <p class="lh-1 text-sm font-medium">
+                    <h1 class="hp:font-bold font-medium text-sm hp:text-md leading-5 tablet:text-lg">${data.title}</h1>
+                    <p class="leading-5 tablet:text-lg hp:text-md text-sm">
                       ${toRupiah(data.price)}
                     </p>
                 </div>
