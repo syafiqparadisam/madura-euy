@@ -1,3 +1,4 @@
+import { showHomeProduct } from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
@@ -49,7 +50,7 @@ const router = async () => {
 
 window.addEventListener("popstate", router);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     document.body.addEventListener("click", e => {
         if (e.target.matches("[data-link]")) {
             e.preventDefault();
@@ -58,4 +59,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     router();
+    await showHomeProduct()
 });
