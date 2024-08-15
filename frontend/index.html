@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Toko madura</title>
 
     <!-- CSS-->
-    <link href="/static/css/style.css" />
+    <link href="/frontend/static/css/style.css" rel="stylesheet" />
+    <link href="/frontend/static/css/tailwind.css" type="text/tailwindcss"/>
     <script
         src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link href="css/tailwind.css" type="text/tailwindcss" />
@@ -15,6 +16,18 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS-->
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+            },
+            screens: {
+                "hp": "370px"
+            }
+          }
+        }
+      </script>
 
 </head>
 
@@ -61,7 +74,7 @@
                         <i class="bi bi-search m-auto px-2"></i>
                     </div>
                 </div>
-                <div class="right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3">
+                <div class="right-0 hidden items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3 hp:flex">
                     <a href="/login" data-link class="rounded-md border-2 border-black px-4 py-2 font-bold">Login</a>
                     <a href="/register" data-link
                         class="bg-black text-white px-4 py-2 rounded-md font-bold border-2 ">Register</a>

@@ -1,4 +1,4 @@
-import { showBigProduct, showPromoProduct } from "./home.js";
+import { showBigProduct, showPromoProduct, showSmallProduct } from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $("#promoProduct").css("width", "400px")
     await showBigProduct()
     await showPromoProduct()
+    await showSmallProduct()
 });
 
 
