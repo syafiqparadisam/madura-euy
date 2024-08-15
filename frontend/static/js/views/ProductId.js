@@ -4,13 +4,13 @@ export default class extends AbstractView {
     constructor(params) {
         super(params);
         this.productId = params.id;
-        this.setTitle(`Product ${this.productId}`);
+        this.setTitle(`Product `);
     }
 
     async getHtml() {
         return `
-            <h1>Product</h1>
-            <p>You are viewing product #${this.productId}.</p>
+            <h1>Post</h1>
+            <p>You are viewing post #${this.productId}.</p>
         `;
     }
 }

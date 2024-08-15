@@ -61,3 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     router();
     await showHomeProduct()
 });
+
+$("#goHome").on("click", () => {
+    window.location.href = "/"
+})
