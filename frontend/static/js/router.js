@@ -2,6 +2,7 @@ import { showBigProduct, showPromoProduct, showSmallProduct } from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
+import { showProductCart,updateSubtotal,increaseQuantity,decreaseQuantity,changeImage } from "./product.js";
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
@@ -58,6 +59,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    const url = window.location.pathname;
+    const id = url.split("/")[2];
+    if(id){
+        showProductCart(id)
+    } 
+
     router();
     $("#promoProduct").css("width", "400px")
     await showBigProduct()
@@ -68,4 +75,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 $("#goHome").on("click", () => {
     window.location.href = "/"
+});
+
+//product button functionality
+$("#decreaseQtt").on("click", () => {
+    decreaseQuantity();
 })
+
+$("#increaseQtt").on("click", () => {
+    increaseQuantity();
+})
+
+// $("#decreaseQtt").on("click", () => {
+//     decreaseQuantity();
+// })
+
+

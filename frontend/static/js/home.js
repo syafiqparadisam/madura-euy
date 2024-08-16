@@ -97,7 +97,7 @@ export async function showPromoProduct() {
   });
 }
 
-function toRupiah(price) {
+export function toRupiah(price) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
