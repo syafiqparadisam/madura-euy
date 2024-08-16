@@ -1,15 +1,15 @@
 {
-  "name": "spa",
+  "name": "toko-madura",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Ikuti langkah-langkah berikut untuk mengatur dan menjalankan proyek ini di lingkungan Windows:",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "express": "^4.19.2"
+  },
+  "author": "",
+  "license": "ISC"
 }
