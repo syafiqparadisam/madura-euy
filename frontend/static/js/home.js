@@ -22,7 +22,7 @@ export async function showBigProduct() {
                     data.image[0]
                   }" class="rounded-md w-full h-full object-cover object-center mx-auto" />
               </div>
-              <div class="flex flex-col  tablet:w-48 hp:w-32 w-24 flex-wrap mt-3">
+              <div class="flex flex-col tablet:w-48 hp:w-32 w-24 flex-wrap mt-3">
                   <div class="flex flex-col flex-wrap">
                       <h1 class="font-bold text-wrap tablet:text-lg hp:text-md leading-1 text-sm overflow-hidden">${
                         data.title
@@ -51,17 +51,17 @@ export async function showSmallProduct() {
   const data = await fetch("http://localhost:3000/data.json");
 
   const products = await data.json();
-  const smallProducts = products.filter((product) => product.id <= 6);
+  const smallProducts = products.filter((product) => product.id <= 5);
 
   smallProducts.map((data) => {
     $("#smallProduct").append(`
        <a href="product/${data.id}" class="nav__link cardProducts" data-link>
-            <div class="shadow-md p-3 m-auto flex flex-col md:m-6 rounded-md cursor-pointer">
-              <div class="w-[120px] h-[120px] m-auto flex overflow-hidden items-center justify-center">
+            <div class="shadow-md py-5 m-auto flex flex-col md:m-6 rounded-md cursor-pointer">
+              <div class="w-[120px] h-[120px]  m-auto flex overflow-hidden items-center justify-center">
                   <img src="${data.image[0]}" class="rounded-md object-cover w-full h-full object-center" />
               </div>
-              <div class="flex flex-col w-full flex-wrap">
-                      <h1 class="font-bold text-sm text-center hp:text-md">${data.title}</h1>
+              <div class="flex justify-center mx-auto hp:w-full w-4/5  flex-wrap">
+                      <h1 class="font-bold text-xs text-wrap text-center hp:text-md">${data.title}</h1>
               </div>
           </div>
           </a>
@@ -79,10 +79,11 @@ export async function showPromoProduct() {
   console.log(promoProducts);
 
   promoProducts.map((data) => {
+    console.log(data);
     $("#promoProduct").append(`
       <a href="product/${data.id}">
-        <div class="shadow-lg flex flex-col p-3 rounded-2xl">
-            <div class="w-[125px] h-[125px] flex flex-col overflow-hidden">
+        <div class="shadow-lg flex flex-col p-2 rounded-xl">
+            <div class="hp:w-[100px] hp:h-[100px] w-[50px] h-[50px] mx-auto flex flex-col overflow-hidden">
                 <img src="${
                   data.image[0]
                 }" class="w-full h-full rounded-md object-center object-cover"/>
@@ -92,7 +93,7 @@ export async function showPromoProduct() {
                     <h1 class="hp:font-bold font-medium text-xs hp:text-sm leading-5 tablet:text-md">${
                       data.title
                     }</h1>
-                    <p class="leading-5 tablet:text-lg hp:text-md font-bold text-sm">
+                    <p class="leading-5 tablet:text-lg hp:text-md font-bold text-xs">
                       ${toRupiah(data.price)}
                     </p>
                 </div>
@@ -107,5 +108,7 @@ function toRupiah(price) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
+    minimumFractionDigits: 2, // Tetapkan jumlah digit desimal minimum
+    maximumFractionDigits: 3  // Tetapkan jumlah digit desimal maksimum
   }).format(price);
 }
