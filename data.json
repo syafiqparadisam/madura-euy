@@ -4,9 +4,9 @@
     "title": "Rokok camel",
     "image": [
       "/static/assets/products/rokok/rokok1.png",
-      "/static/assets/products/rokok/rokok2.png",
-      "/static/assets/products/rokok/rokok3.png",
-      "/static/assets/products/rokok/rokok4.png"
+      "/static/assets/products/rokok/rokok2.jpg",
+      "/static/assets/products/rokok/rokok3.jpg",
+      "/static/assets/products/rokok/rokok4.jpg"
     ],
     "rating": 4,
     "location": "Madura",
@@ -49,7 +49,7 @@
     ],
     "rating": 5,
     "location": "Madura",
-    "price": 18000,
+    "price": 12000,
     "discount": 10,
     "description": "Rojolele Super Quality adalah beras premium berkualitas tinggi yang diproses dengan teknologi modern. Beras ini memiliki bentuk cenderung bulat dengan sedikit bagian berwarna putih susu dan beraroma khas seperti pandan wangi. Beras rojolele ini sangat cocok untuk usaha warung makan. ",
     "soldTotal": 100,
@@ -97,9 +97,9 @@
     "title": "Minyak goreng bimoli",
     "image": [
       "/static/assets/products/minyak/minyak1.png",
-      "/static/assets/products/minyak/minyak2.png",
-      "/static/assets/products/minyak/minyak3.png",
-      "/static/assets/products/minyak/minyak4.png"
+      "/static/assets/products/minyak/minyak2.jpg",
+      "/static/assets/products/minyak/minyak3.jpg",
+      "/static/assets/products/minyak/minyak4.jpg"
     ],
     "rating": 5,
     "location": "Madura",
@@ -128,9 +128,9 @@
     "title": "Tepung Segitiga Biru",
     "image": [
       "/static/assets/products/terigu/tepung1.png",
-      "/static/assets/products/terigu/tepung2.png",
-      "/static/assets/products/terigu/tepung3.png",
-      "/static/assets/products/terigu/tepung4.png"
+      "/static/assets/products/terigu/tepung2.jpg",
+      "/static/assets/products/terigu/tepung3.jpg",
+      "/static/assets/products/terigu/tepung4.jpg"
     ],
     "rating": 5,
     "location": "Madura",
@@ -182,9 +182,9 @@
     "title": "Pasta gigi kodomo",
     "image": [
       "/static/assets/products/pasta-gigi/pasta1.png",
-      "/static/assets/products/pasta-gigi/pasta2.png",
-      "/static/assets/products/pasta-gigi/pasta3.png",
-      "/static/assets/products/pasta-gigi/pasta4.png"
+      "/static/assets/products/pasta-gigi/pasta2.jpg",
+      "/static/assets/products/pasta-gigi/pasta3.jpg",
+      "/static/assets/products/pasta-gigi/pasta4.jpg"
     ],
     "rating": 5,
     "location": "Madura",
@@ -219,7 +219,7 @@
       "/static/assets/products/sabun/sabun1.png",
       "/static/assets/products/sabun/sabun2.png",
       "/static/assets/products/sabun/sabun3.png",
-      "/static/assets/products/sabun/sabun4.png"
+      "/static/assets/products/sabun/sabun4.jpg"
     ],
     "rating": 5,
     "location": "Madura",
@@ -375,7 +375,7 @@
     "rating": 5,
     "location": "Madura",
     "price": 2000,
-    "discount": 80,
+    "discount": 30,
     "description": "Hilo (atau yang digayakan sebagai HiLo) adalah merek susu yang diproduksi oleh perusahaan Nutrifood Indonesia. Nama Hilo diduga berasal dari kata \"High\" dari High Calcium dan \"Low\" dari Low Fat yang muncul pada tulisan kemasan produk pertama HiLo yang dirilis pada tahun 2004 dengan nama Tropicana Slim HiLo.",
     "soldTotal": 100,
     "stock": 999,
@@ -403,7 +403,7 @@
     "title": "Wafer nabati",
     "image": [
       "/static/assets/products/nabati/nabati1.png",
-      "/static/assets/products/nabati/nabati2png",
+      "/static/assets/products/nabati/nabati2.png",
       "/static/assets/products/nabati/nabati3.png",
       "/static/assets/products/nabati/nabati4.png"
     ],

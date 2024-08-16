@@ -3,11 +3,11 @@ import { toRupiah } from "./home.js";
 export async function showProductCart(id) {
   const data = await fetch("http://localhost:3000/data.json")
   const products = await data.json();
-  
+
   const product = products.find((product) => product.id == id);
   const productArr = [product];
+  let price = data.price;
 
-  
   productArr.map((data) => {
     //rating
     let starsHtml = "";
@@ -19,18 +19,21 @@ export async function showProductCart(id) {
       starsHtml += `<i class="bi bi-star"></i>`;
     }
 
-    //Image
-  //   let thumbnailsHtml = data.image.map((imgSrc, index) => {
-  //     // Index is used for both the alt text and the onclick function for changeImage
-  //     return `
-  //         <img src="${imgSrc}" alt="Thumbnail ${index + 1}" class="w-20 h-20 cursor-pointer" onclick="changeImage('${imgSrc}', ${index + 1})">
-  //     `;
-  // // })
+    let VariantsContainer = [];
+    for (let i = 0; i <= data.variants.length - 1; i++) {
+      VariantsContainer.push(`<option>${data.variants[i].variant}</option>`);
+    }
+
+    let imagesContainer = [];
+    for (let i = 0; i <= data.image.length - 1; i++) {
+      imagesContainer.push(`<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer" data-index="${i}">`)  
+    }
+
 
     $("#productCart").append(`<!-- Grid Layout for Main Content -->
       <div class="grid grid-cols-3 gap-4 flex-grow">
         <!-- Left Section: Product Image, Title, and Carousel -->
-        <div class="space-y-4">
+        <div class="space-y-4"> 
           <!-- Product Title Container -->
           <div class="bg-red-600 p-2">
             <h1 id="productTitle" class="text-2xl font-bold text-black">${data.title}</h1>
@@ -46,10 +49,7 @@ export async function showProductCart(id) {
           </div>
           <!-- Carousel Thumbnails -->
           <div id="thumbnailContainer" class="flex justify-between">
-                <img src="${data.image[0]}" alt="Thumbnail 1" class="thumbnails w-20 h-20 cursor-pointer">
-                <img src="${data.image[1]}" alt="Thumbnail 2" class="thumbnails w-20 h-20 cursor-pointer">
-                <img src="${data.image[2]}" alt="Thumbnail 3" class="thumbnails w-20 h-20 cursor-pointer">
-                <img src="${data.image[3]}" alt="Thumbnail 4" class="thumbnails w-20 h-20 cursor-pointer">
+            ${imagesContainer}
           </div>
         </div>
     
@@ -86,9 +86,7 @@ export async function showProductCart(id) {
               id="variantSelect"
               class="w-full p-2 bg-white border border-gray-300 rounded"
             >
-              <option>${data.variant[0]}</option>
-              <option>${data.variant[1]}</option>
-              <option>${data.variant[2]}</option>
+             ${VariantsContainer}
             </select>
           </div>
           <div class="flex items-center space-x-4">
@@ -99,6 +97,7 @@ export async function showProductCart(id) {
               type="text"
               value="1"
               class="mx-2 text-center w-12 bg-white border border-gray-300 rounded"
+              readonly
             />
             <button  class="px-4 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
             <span id="stockCount" class="text-gray-500">Stok: ${data.stock}</span>
@@ -125,47 +124,117 @@ export async function showProductCart(id) {
     
           <!-- Buy Button -->
           <div class="space-y-2">
-            <button class="w-full bg-slate-700 text-white py-2 rounded">Beli</button>
+            <button class="w-full bg-slate-700 text-white py-2 rounded" id="BuyButton">Beli</button>
           </div>
         </div>
-      </div>`)
+      </div>
+      
+      <!-- Confirmation Modal -->
+      <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Are you sure you want to buy this item?</p>
+          <div class="flex justify-end mt-4">
+            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
+            <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Confirmation Modal -->
+      <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Item is delivered</p>
+          <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        </div>
+      </div>
+
+      <!-- Purchase Cancelled Modal -->
+      <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Purchase cancelled</p>
+          <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        </div>
+      </div>
+`)
 
     $("#decreaseQtt").on("click", () => {
-        decreaseQuantity();
-    })
-    
-    $("#increaseQtt").on("click", () => {
-        increaseQuantity();
+      decreaseQuantity();
     })
 
-    $(".thumbnails").on("click", () => {
-      const imageSrc = $(this).data('src'); // Get the image source from data attribute
-      const imageIndex = $(this).data('index'); // Get the index of the image
-    
-      // Call the changeImage function with the src and index
-      changeImage(imageSrc, imageIndex); // Pass index as is to match 1-based indexin
+    $("#increaseQtt").on("click", () => {
+      increaseQuantity();
     })
+
+    //Update Thumbnail when picture in thumbnail container is clicked
+    $("#thumbnailContainer").on("click", ".thumbnails", function () {
+      // Get the index from the clicked thumbnail
+      const index = $(this).data("index");
+      // Get the image source from the `data.image` array based on the index
+      const newImageSrc = data.image[index]; // Ensure `data` is in scope here
+
+      // Change the main image source
+      $("#currentImage").attr("src", newImageSrc);
+
+      // Optional: Update thumbnail borders to indicate the selected image
+      $(".thumbnails").css("border-bottom", "none");
+      $(this).css("border-bottom", "3px solid red");
+
+      /*Modal Box */
+      const $buyButton = $("#buyButton");
+      const $confirmationModal = $("#confirmationModal");
+      const $deliveryModal = $("#deliveryModal");
+      const $cancelModal = $("#cancelModal");
+      const $confirmBuy = $("#confirmBuy");
+      const $cancelBuy = $("#cancelBuy");
+      const $closeDeliveryModal = $("#closeDeliveryModal");
+      const $closeCancelModal = $("#closeCancelModal");
+
+      $("#BuyButton").on("click", function () {
+        $("#confirmationModal").removeClass("hidden");
+        console.log("#confirmationModal")
+      });
+
+      $confirmBuy.on("click", function () {
+        $confirmationModal.addClass("hidden");
+        $deliveryModal.removeClass("hidden");
+      });
+
+      $cancelBuy.on("click", function () {
+        $confirmationModal.addClass("hidden");
+        $cancelModal.removeClass("hidden");
+      });
+
+      $closeDeliveryModal.on("click", function () {
+        $deliveryModal.addClass("hidden");
+      });
+
+      $closeCancelModal.on("click", function () {
+        $cancelModal.addClass("hidden");
+      });
+    });
   })
 }
 
 export function discount(price, discountPercentage) {
-  const discountAmount =( price * discountPercentage ) / 100;
-  const discountedPrice= price - discountAmount;
+  const discountAmount = price * (discountPercentage / 100);
+  const discountedPrice = price - discountAmount;
   return discountedPrice;
 }
 
 export function updateSubtotal() {
+  // Select the subtotal DOM element and update its text content
   const quantity = parseInt(document.getElementById('quantityInput').value);
-  const discountedPrice = parseFloat(document.getElementById('discountedPrice').textContent.replace(/[^\d.-]/g, '')); // Get the numeric value from discounted price
+  const discountedPrice = parseFloat(document.getElementById('discountedPrice').textContent.replace(/[^\d.-]/g, ''));
   const subtotal = discountedPrice * quantity;
 
   // Select the subtotal DOM element and update its text content
   const subtotalElement = document.getElementById('subtotalPrice');
-  subtotalElement.textContent = `Rp ${subtotal.toLocaleString("id-ID")}`;
+
+  // Ensure that the subtotal is formatted correctly to two decimal places
+  subtotalElement.textContent = `Rp ${subtotal.toLocaleString("id-ID", { minimumFractionDigits: 3, maximumFractionDigits: 99 })}`;
 }
 
- export function increaseQuantity() {
-  console.log("kdkjcns");
+export function increaseQuantity() {
   let quantity = parseInt(quantityInput.value);
   quantity += 1;
   quantityInput.value = quantity;
@@ -173,7 +242,6 @@ export function updateSubtotal() {
 }
 
 export function decreaseQuantity() {
-  console.log("jdsjhn");
   let quantity = parseInt(quantityInput.value);
   if (quantity > 1) {
     quantity -= 1;
@@ -188,6 +256,6 @@ export function changeImage(imageSrc, imageNumber) {
   let thumbnails = document.querySelectorAll(".thumbnails");
   thumbnails.forEach((thumbnail, index) => {
     thumbnail.style.borderBottom =
-      index === imageNumber - 1 ? "3px solid red" : "none";
+      index === imageIndex ? "3px solid red" : "none";
   });
 }
