@@ -9,7 +9,7 @@
       "/static/assets/products/rokok/rokok4.jpg"
     ],
     "rating": 4,
-    "location": "Madura",
+    "location": "Bangkalan",
     "price": 15000,
     "discount": 30,
     "description": "ROKOK CAMEL ACTIVE PURPLE MINT ISI 20 BATANG 1 BUNGKUS ISI 20 BATANG HARGA DIATAS HARGA PER 1 BUNGKUS",
@@ -48,7 +48,7 @@
       "/static/assets/products/beras/beras4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sumenep",
     "price": 12000,
     "discount": 10,
     "description": "Rojolele Super Quality adalah beras premium berkualitas tinggi yang diproses dengan teknologi modern. Beras ini memiliki bentuk cenderung bulat dengan sedikit bagian berwarna putih susu dan beraroma khas seperti pandan wangi. Beras rojolele ini sangat cocok untuk usaha warung makan. ",
@@ -79,7 +79,7 @@
       "/static/assets/products/gula/gula4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sumenep",
     "price": 17000,
     "discount": 40,
     "description": "produk gula tebu yang diproses dengan standar mutu yang tinggi sehingga menghasilkan gula yang murni, manis, bersih, dan alami.Gulaku Tebu memiliki aroma karameldan memiliki rasa leih manis dibanding gula pasir putih.",
@@ -102,7 +102,7 @@
       "/static/assets/products/minyak/minyak4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sampang",
     "price": 22000,
     "discount": 40,
     "description": "Minyak goreng Bimoli dibuat dari bibit biji kelapa sawit pilihan yaitu \"Tenera\" untuk menghasilkan minyak goreng dengan kualitas terbaik. Diperkaya dengan Vitamin E, Pro Vitamin A Omega-6 dan Omega-9 yang dapat membantu menurunkan kolesterol jahat LDL dan menaikkan kolesterol baik HDL.",
@@ -133,7 +133,7 @@
       "/static/assets/products/terigu/tepung4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Bangkalan",
     "price": 12000,
     "discount": 10,
     "description": "Segitiga Biru adalah tepung terigu yang cocok untukmembuat aneka makanan seperti bolu, brownies, cake, pisang, martabak manis, muffin, kue bulan, croissant, puff pastry, denish, bapia, pastel, kroket, risoles, dan lain-lain. Komposisi : Tepung terigu, Vitamin B1, Vitamin B2, Asam folat, zat besi dan seng.",
@@ -160,7 +160,7 @@
       "/static/assets/products/telur/telur4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Pamekasan",
     "price": 12500,
     "discount": 40,
     "description": "Telur ayam adalah telur yang dihasilkan oleh ternak unggas ayam. Terdapat dua macam telur ayam yang banyak dikonsumsi oleh masyarakat yaitu telur ayam kampung (telur ayam buras) dan telur ayam negeri (telur ayam ras). Telur ayam kampung merupakan telur ayam yang berasal dari unggas ayam kampung.",
@@ -187,7 +187,7 @@
       "/static/assets/products/pasta-gigi/pasta4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Pamekasan",
     "price": 8000,
     "discount": 10,
     "description": "Kodomo pasta gigi untuk anak-anak dengan rasa jeruk yang mengandung fluoride dan xylitol untuk membantu mencegah gigi berlubang dengan remineralisasi gigi dan sekaligus menjaga kesehatan gigi anak.",
@@ -222,7 +222,7 @@
       "/static/assets/products/sabun/sabun4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Bangkalan",
     "price": 3000,
     "discount": 60,
     "description": "lorem ipsum",
@@ -257,7 +257,7 @@
       "/static/assets/products/okky-jelly/okky4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sampang",
     "price": 1000,
     "discount": 10,
     "description": "OKKY Jelly Drink adalah minuman jelly siap minum pertama dalam kemasan cup/gelas di Indonesia yang dirilis pada tahun 2003. Dengan rasa buah yang menyegarkan, ditambah Nata De Coco yang dapat dikunyah untuk sensasi yang menyenangkan.",
@@ -284,7 +284,7 @@
       "/static/assets/products/teh-pucuk/teh4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sumenep",
     "price": 3500,
     "discount": 30,
     "description": "Teh Pucuk Harum diproduksi oleh PT Mayora Indah Tbk pada tahun 2011. Minuman ini dibuat dari pucuk daun teh pilihan, bagian terbaik untuk membuat minuman teh. Produk teh ini dipadukan dengan aroma jasmine untuk menciptakan rasa teh yang terbaik. Produk minuman ini dikemas praktis, sehingga mudah dibawa kemana saja.",
@@ -311,7 +311,7 @@
       "/static/assets/products/obat-nyamuk/baygon4.jpg"
     ],
     "rating": 2,
-    "location": "Madura",
+    "location": "Bangkalan",
     "price": 5000,
     "discount": 50,
     "description": "Baygon adalah merek pestisida produksi S. C. Johnson & Son. Kegunaannya adalah sebagai pembasmi dan pengendali handalan rumah tangga, seperti nyamuk, kecoa, lipan, dan semut. Merek ini sangat populer di Indonesia sehingga sudah menjadi nama generik bagi produk sejenis.",
@@ -342,7 +342,7 @@
       "/static/assets/products/pakan-burung/pakan1.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sumenep",
     "price": 8000,
     "discount": 60,
     "description": "pakan burung, pleci, glatik , prenjak, pelet/ voer mini, bahan baku segar bermutu protek in tinggi, multi vitamin dan mineral sehingga membuat burung tetap setabil, tidak mudah stres,",
@@ -373,7 +373,7 @@
       "/static/assets/products/hilo/hilo4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sampang",
     "price": 2000,
     "discount": 30,
     "description": "Hilo (atau yang digayakan sebagai HiLo) adalah merek susu yang diproduksi oleh perusahaan Nutrifood Indonesia. Nama Hilo diduga berasal dari kata \"High\" dari High Calcium dan \"Low\" dari Low Fat yang muncul pada tulisan kemasan produk pertama HiLo yang dirilis pada tahun 2004 dengan nama Tropicana Slim HiLo.",
@@ -408,7 +408,7 @@
       "/static/assets/products/nabati/nabati4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Pamekasan",
     "price": 10000,
     "discount": 80,
     "description": "Wafer Nabati ini terdiri dari lapisan tipis dan renyah yang terbuat dari tepung nabati, tepung beras, jagung, dan kacang-kacangan. Makanan ini juga mempunyai kandungan vitamin, mineral, dan serat. Sehingga kandungan gizinya tetap ada dan memenuhi kebutuhan tubuh.",
@@ -439,7 +439,7 @@
       "/static/assets/products/shampoo/shampoo4.png"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Sumenep",
     "price": 3000,
     "discount": 40,
     "description": "Dibuat dengan perpaduan minyak wangi bunga, vitamin B3, dan kolagen, sampo Sunsilk Smooth & Manageable memberikan rambut wangi hingga 5x lebih halus dan tahan lama sepanjang hari .",
@@ -470,7 +470,7 @@
       "/static/assets/products/tisu/tisu4.jpg"
     ],
     "rating": 5,
-    "location": "Madura",
+    "location": "Bangkalan",
     "price": 7000,
     "discount": 40,
     "description": "Nice Facial merupakan tissue berbahan serat alami (Virgin Plantation Pulp) yang dapat melindungi Anda dari kuman kapanpun dan dimanapun. Dengan bahan dan tekstur lembut yang akan membersihkan kulit Anda tanpa iritasi, sehingga ideal digunakan saat di mobil, di kantor, bepergian, berolahraga, dan aktivitas lainnya.",
