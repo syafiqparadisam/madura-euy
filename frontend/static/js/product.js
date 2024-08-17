@@ -1,41 +1,11 @@
 import { toRupiah } from "./home.js";
 
 export async function showProductCart(id) {
-  const data = await fetch("http://localhost:3000/data.json")
+  const data = await fetch("../../../data.json")
   const products = await data.json();
 
   const product = products.find((product) => product.id == id);
   const productArr = [product];
-
-  // Static Modal HTML added outside of the .map() loop
-  $("#productCart").append(`
-    <!-- Confirmation Modal -->
-    <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div class="modal-content bg-white p-4 rounded shadow-lg">
-        <p class="text-lg">Are you sure you want to buy this item?</p>
-        <div class="flex justify-end mt-4">
-          <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
-          <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delivery Modal -->
-    <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div class="modal-content bg-white p-4 rounded shadow-lg">
-        <p class="text-lg">Item is delivered</p>
-        <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
-      </div>
-    </div>
-
-    <!-- Cancel Modal -->
-    <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div class="modal-content bg-white p-4 rounded shadow-lg">
-        <p class="text-lg">Purchase cancelled</p>
-        <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
-      </div>
-    </div>
-  `);
 
   productArr.map((data) => {
     //rating
@@ -63,10 +33,10 @@ export async function showProductCart(id) {
       <!-- Confirmation Modal -->
       <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Are you sure you want to buy this item?</p>
+          <p class="text-lg text-black font-semibold">Apakah kamu yakin ingin membeli Produk ini?</p>
           <div class="flex justify-end mt-4">
-            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
-            <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
+            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">YA</button>
+            <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">BATAL</button>
           </div>
         </div>
       </div>
@@ -74,7 +44,7 @@ export async function showProductCart(id) {
       <!-- Delivery Modal -->
       <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Item is delivered</p>
+          <p class="text-lg text-black font-semibold">Di tunggu ya,barang sedang diantar :)</p>
           <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
         </div>
       </div>
@@ -82,7 +52,7 @@ export async function showProductCart(id) {
       <!-- Cancel Modal -->
       <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Purchase cancelled</p>
+          <p class="text-lg text-black font-semibold">Transaksi dibatalkan :(</p>
           <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
         </div>
       </div>
@@ -92,13 +62,13 @@ export async function showProductCart(id) {
         <!-- Left Section: Product Image, Title, and Carousel -->
         <div class="space-y-4">
           <!-- Product Title Container -->
-          <div class="bg-red-600 p-2 rounded-md shadow-md">
-            <h1 id="productTitle" class="text-2xl font-bold text-black">${data.title}</h1>
-          </div>
-          <!-- Main Product Image -->
-          <div id="mainImage" class="w-full h-72 bg-gray-100 flex justify-center items-center rounded-md shadow-md">
+          <div class="g-gray-100 p-2 rounded-md shadow-md hp:block hidden" id="mainTitle">
+            <h1 id="productTitle" class="text-lg font-bold text-black text-center">${data.title}</h1>
+            </div>
+            <!-- Main Product Image -->
+            <div id="mainImage" class="w-full h-72 bg-gray-100 flex justify-center items-center rounded-md shadow-md">
             <img
-              id="currentImage"
+            id="currentImage"
               src="${data.image[0]}"
               alt="Product Image"
               class="object-contain h-full w-full"
@@ -115,6 +85,7 @@ export async function showProductCart(id) {
           <!-- Pricing and Rating Section -->
           <div class="bg-gray-100 text-black p-4 space-y-2 rounded-md shadow-md">
             <p class="text-lg">
+              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${data.title}</h1>
               <span id="originalPrice" class="line-through">${toRupiah(data.price)}</span>
               <span id="discountedPrice" class="font-semibold text-xl">${toRupiah(discount(data.price, data.discount))}</span>
               <span id="soldTotal" class="font-light text-m">(${data.soldTotal})</span>
@@ -188,6 +159,8 @@ export async function showProductCart(id) {
       </div>
     `);
 
+    // console.log(product.variants);
+
     // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
       decreaseQuantity();
@@ -235,6 +208,22 @@ export async function showProductCart(id) {
   $("#closeCancelModal").on("click", function () {
     $("#cancelModal").addClass("hidden");
   });
+
+  //dynamic pricing based on Variants
+  $("#variantSelect").on("change", function () {
+    const selectedVariant = $(this).val();
+    const variant = product.variants.find(v => v.variant === selectedVariant);
+    
+    if (variant) {
+      currentVariantPrice = Number(variant.price); // Store the selected variant price
+      const newDiscountedPrice = discount(currentVariantPrice, data.discount);
+      
+      $("#discountedPrice").text(toRupiah(newDiscountedPrice));
+      
+      // Call updateSubtotal to apply the new variant price
+      updateSubtotal();
+    }
+  });
 }
 
 export function discount(price, discountPercentage) {
@@ -243,27 +232,40 @@ export function discount(price, discountPercentage) {
   return discountedPrice;
 }
 
+let currentVariantPrice = null; // Store the current variant price
+
 export function updateSubtotal() {
   const quantity = parseInt(document.getElementById("quantityInput").value);
-  const discountedPrice = parseFloat(
-    document
-      .getElementById("discountedPrice")
-      .textContent.replace(/[^\d.-]/g, "")
+
+  // Use currentVariantPrice if available, otherwise get the discounted price from the DOM
+  let priceToUse = currentVariantPrice || parseFloat(
+    document.getElementById("discountedPrice").textContent.replace(/[^\d.-]/g, "")
   );
-  const subtotal = discountedPrice * quantity;
+
+  // Check if priceToUse is a valid number
+  if (isNaN(priceToUse)) {
+    priceToUse = 0; // Default to 0 if the price is invalid
+  }
+
+  // Calculate the subtotal
+  const subtotal = priceToUse * quantity;
 
   const subtotalElement = document.getElementById("subtotalPrice");
 
-  // Format subtotal with locale string and replace the first comma with a dot
+  // Format the subtotal to Indonesian Rupiah format
   let formattedSubtotal = subtotal.toLocaleString("id-ID", {
-    minimumFractionDigits: 3,
-    maximumFractionDigits: 3,
-  }).replace(",", "."); // Replace the first comma with a dot
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-  // Append ",00" and update the text content
-  subtotalElement.textContent = `Rp ${formattedSubtotal},00`;
+  // Only add ",00" if it doesn't already exist
+  if (!formattedSubtotal.endsWith(",00")) {
+    formattedSubtotal += ",00";
+  }
+
+  // Update the subtotal element with the formatted value
+  subtotalElement.textContent = `Rp ${formattedSubtotal}`;
 }
-
 
 export function increaseQuantity() {
   const quantityInput = document.getElementById("quantityInput");
@@ -285,12 +287,12 @@ export function decreaseQuantity() {
 
 export function changeImage(imageSrc, imageNumber) {
   document.getElementById("currentImage").src = imageSrc;
-  
+
   let thumbnails = document.querySelectorAll(".thumbnails");
-  
+
   thumbnails.forEach((thumbnail, index) => {
     // Apply a red border around the entire thumbnail if selected
-    thumbnail.style.borderBotom = 
+    thumbnail.style.borderBotom =
       index === imageNumber ? "3px solid red" : "none";
   });
 }
