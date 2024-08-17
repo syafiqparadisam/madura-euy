@@ -37,10 +37,10 @@
 <body>
 
     <!-- navbar-->
-    <nav class="bg-gray-100 w-full">
+    <nav class="bg-gray-100 w-full shadow-lg sticky top-0 z-40">
         <div class="mx-auto w-full px-2 tablet:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 left-0 flex items-center tablet:hidden">
+            <div class="relative flex h-16 items-center justify-around tablet:justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center cursor-pointer tablet:hidden">
                     <!-- Mobile menu button-->
                     <button type="button"
                         class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -68,7 +68,8 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex items-center w-1/5 justify-start tablet:justify-between cursor-pointer" id="goHome">
+                <div class="flex items-center tablet:w-1/5 w-2/5 hp:block hidden mx-auto justify-center tablet:justify-between cursor-pointer"
+                    id="goHome">
                     <div class="flex items-center justify-center">
                         <img class="mt-2 max-w-24 text-center" src="/static/assets/logomadura-removebg-preview.png"
                             alt="Your Company">
@@ -76,12 +77,17 @@
                         </h2>
                     </div>
                 </div>
-                <div class="flex items-center justify-center w-3/5 tablet:w-5/5">
-                    <div class="bg-white flex w-full rounded-lg border-1 border border-black">
+                <div
+                    class="flex items-center flex-col justify-center w-4/5 hp:ml-0 ml-10 hp:w-3/5 tablet:w-5/5 relative">
+                    <div class="bg-white flex w-full rounded-lg border-1 border border-black ">
                         <input id="searchInput"
-                            class="w-full rounded-md py-2 px-2 focus:outline-none border-none focus:border-none" />
+                            class="w-full rounded-md py-2 px-2 focus:outline-none  border-none focus:border-none"
+                            autocomplete="on" placeholder="Search ..." />
                         <i class="bi bi-search m-auto px-2 hover:cursor-pointer" id="searchIcon"></i>
                     </div>
+                    <ul id="searchHistory"
+                        class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
+                    </ul>
                 </div>
                 <div class="right-0 hidden items-center pr-2 mx-3 gap-3 tablet:flex">
                     <a href="/login" class="rounded-md border-2 border-black px-4 py-2 font-bold">Login</a>
@@ -92,19 +98,17 @@
         </div>
         </div>
 
-        <div class="tablet:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+        <div class="tablet:hidden " id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 absolute bg-white shadow-md w-full">
+                <a href="/"
+                    class="block rounded-md hover:cursor-pointer bg-gray-900 px-3 py-2 text-base text-center font-medium text-white"
                     aria-current="page">Home</a>
-                <!-- <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a> -->
-                <div class="flex justify-around w-full">
-                    <a href="/login" class="rounded-md border-2 border-black px-8 py-2 font-bold">Login</a>
-                    <a href="/register"
-                        class="bg-black text-white px-8 py-2 rounded-md font-bold border-2 ">Register</a>
-                </div>
+                <a href="/login"
+                    class="block rounded-md  text-center hover:cursor-pointer bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                    aria-current="page">Login</a>
+                <a href="/register"
+                    class="block rounded-md  text-center hover:cursor-pointer bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                    aria-current="page">Register</a>
             </div>
         </div>
     </nav>
@@ -113,26 +117,30 @@
     <!-- Carousel wrapper -->
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative overflow-hidden rounded-lg h-96">
+        <div class="relative overflow-hidden rounded-lg h-24 hp:h-36 tablet:h-60 laptop:h-80">
             <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
                 <img src="/static/assets/Banner/banner1.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+                    alt="...">
             </div>
             <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
                 <img src="/static/assets/Banner/banner2.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+                    alt="...">
             </div>
-             <!-- Item 4 -->
-             <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <!-- Item 4 -->
+            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
                 <img src="/static/assets/Banner/banner3.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+                    alt="...">
             </div>
             <!-- Item 5 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
                 <img src="/static/assets/Banner/banner4.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+                    alt="...">
             </div>
         </div>
         <!-- Slider indicators -->

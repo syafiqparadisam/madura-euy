@@ -10,7 +10,7 @@ export default class extends AbstractView {
     return `
    
             <!-- Small Products -->
-            <section class="flex w-full py-10 justify-center items-center flex-wrap my-10 tablet:gap-10 gap-2 text-center hp:gap-3 mx-0 hp:mx-auto" id="smallProduct">
+            <section class="flex w-full py-1 hp:py-4 tablet:py-7 justify-center items-center flex-wrap my-10 tablet:gap-10 gap-2 text-center hp:gap-3 mx-auto" id="smallProduct">
                 
             </section>
             <!-- Small Products end -->
@@ -31,6 +31,8 @@ export default class extends AbstractView {
             <section class="flex tablet:w-4/5 justify-around items-center flex-wrap my-10 tablet:gap-10 hp:gap-5 gap-2 mx-1 hp:mx-auto" id="bigProduct">
             </section>
             <!-- full card product-->
+
+          
         `;
   }
 }
