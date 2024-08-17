@@ -6,7 +6,36 @@ export async function showProductCart(id) {
 
   const product = products.find((product) => product.id == id);
   const productArr = [product];
-  let price = data.price;
+
+  // Static Modal HTML added outside of the .map() loop
+  $("#productCart").append(`
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div class="modal-content bg-white p-4 rounded shadow-lg">
+        <p class="text-lg">Are you sure you want to buy this item?</p>
+        <div class="flex justify-end mt-4">
+          <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
+          <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery Modal -->
+    <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div class="modal-content bg-white p-4 rounded shadow-lg">
+        <p class="text-lg">Item is delivered</p>
+        <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+      </div>
+    </div>
+
+    <!-- Cancel Modal -->
+    <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div class="modal-content bg-white p-4 rounded shadow-lg">
+        <p class="text-lg">Purchase cancelled</p>
+        <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+      </div>
+    </div>
+  `);
 
   productArr.map((data) => {
     //rating
@@ -26,37 +55,65 @@ export async function showProductCart(id) {
 
     let imagesContainer = [];
     for (let i = 0; i <= data.image.length - 1; i++) {
-      imagesContainer.push(`<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer" data-index="${i}">`)  
+      imagesContainer.push(`<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer bg-gray-200 rounded-md shadow-md" data-index="${i}">`)
     }
 
 
-    $("#productCart").append(`<!-- Grid Layout for Main Content -->
-      <div class="grid grid-cols-3 gap-4 flex-grow">
+    $("#productCart").append(`
+      <!-- Confirmation Modal -->
+      <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Are you sure you want to buy this item?</p>
+          <div class="flex justify-end mt-4">
+            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
+            <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Delivery Modal -->
+      <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Item is delivered</p>
+          <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        </div>
+      </div>
+    
+      <!-- Cancel Modal -->
+      <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+          <p class="text-lg">Purchase cancelled</p>
+          <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        </div>
+      </div>
+    
+      <!-- Grid Layout for Main Content -->
+      <div class="grid grid-cols-1 hp:grid-cols-2 tablet:grid-cols-3 gap-4 flex-grow">
         <!-- Left Section: Product Image, Title, and Carousel -->
-        <div class="space-y-4"> 
+        <div class="space-y-4">
           <!-- Product Title Container -->
-          <div class="bg-red-600 p-2">
+          <div class="bg-red-600 p-2 rounded-md shadow-md">
             <h1 id="productTitle" class="text-2xl font-bold text-black">${data.title}</h1>
           </div>
           <!-- Main Product Image -->
-          <div id="mainImage" class="w-full h-72 bg-gray-200 flex justify-center items-center">
+          <div id="mainImage" class="w-full h-72 bg-gray-100 flex justify-center items-center rounded-md shadow-md">
             <img
               id="currentImage"
-              src=${data.image[0]}
+              src="${data.image[0]}"
               alt="Product Image"
               class="object-contain h-full w-full"
             />
           </div>
           <!-- Carousel Thumbnails -->
-          <div id="thumbnailContainer" class="flex justify-between">
-            ${imagesContainer}
+          <div id="thumbnailContainer" class="flex hp:flex-wrap tablet:flex-nowrap justify-between p-3">
+            ${imagesContainer.join('')}
           </div>
         </div>
     
         <!-- Middle Section: Product Details -->
         <div class="space-y-4">
           <!-- Pricing and Rating Section -->
-          <div class="bg-gray-200 text-black p-4 space-y-2">
+          <div class="bg-gray-100 text-black p-4 space-y-2 rounded-md shadow-md">
             <p class="text-lg">
               <span id="originalPrice" class="line-through">${toRupiah(data.price)}</span>
               <span id="discountedPrice" class="font-semibold text-xl">${toRupiah(discount(data.price, data.discount))}</span>
@@ -70,15 +127,16 @@ export async function showProductCart(id) {
           </div>
     
           <!-- Product Description -->
-          <div class="bg-gray-200 text-black p-4">
+          <div class="bg-gray-100 text-black p-4 rounded-md shadow-md">
             <p id="productDescription">
+              Deskripsi Produk:
               ${data.description}
             </p>
           </div>
         </div>
     
         <!-- Right Section: Atur Jumlah dan Catatan -->
-        <div class="bg-gray-100 text-black p-4 space-y-4">
+        <div class="bg-gray-100 text-black p-4 space-y-4 rounded-md shadow-md">
           <h3 class="text-lg font-semibold">Atur Jumlah dan Catatan</h3>
           <div>
             <label for="variantSelect">Varian Produk:</label>
@@ -86,12 +144,12 @@ export async function showProductCart(id) {
               id="variantSelect"
               class="w-full p-2 bg-white border border-gray-300 rounded"
             >
-             ${VariantsContainer}
+              ${VariantsContainer.join('')}
             </select>
           </div>
-          <div class="flex items-center space-x-4">
+          <div class="flex flex-wrap items-center space-x-4">
             <label>Quantity:</label>
-            <button  class="px-4 py-2 bg-slate-700 text-white rounded" id="decreaseQtt">-</button>
+            <button class="px-4 py-2 bg-slate-700 text-white rounded" id="decreaseQtt">-</button>
             <input
               id="quantityInput"
               type="text"
@@ -99,7 +157,7 @@ export async function showProductCart(id) {
               class="mx-2 text-center w-12 bg-white border border-gray-300 rounded"
               readonly
             />
-            <button  class="px-4 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
+            <button class="px-4 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
             <span id="stockCount" class="text-gray-500">Stok: ${data.stock}</span>
           </div>
     
@@ -128,49 +186,23 @@ export async function showProductCart(id) {
           </div>
         </div>
       </div>
-      
-      <!-- Confirmation Modal -->
-      <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Are you sure you want to buy this item?</p>
-          <div class="flex justify-end mt-4">
-            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">Yes</button>
-            <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">No</button>
-          </div>
-        </div>
-      </div>
+    `);
 
-      <!-- Delivery Confirmation Modal -->
-      <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Item is delivered</p>
-          <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
-        </div>
-      </div>
-
-      <!-- Purchase Cancelled Modal -->
-      <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg">Purchase cancelled</p>
-          <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
-        </div>
-      </div>
-`)
-
+    // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
       decreaseQuantity();
-    })
+    });
 
     $("#increaseQtt").on("click", () => {
       increaseQuantity();
-    })
+    });
 
     //Update Thumbnail when picture in thumbnail container is clicked
     $("#thumbnailContainer").on("click", ".thumbnails", function () {
       // Get the index from the clicked thumbnail
       const index = $(this).data("index");
       // Get the image source from the `data.image` array based on the index
-      const newImageSrc = data.image[index]; // Ensure `data` is in scope here
+      const newImageSrc = data.image[index];
 
       // Change the main image source
       $("#currentImage").attr("src", newImageSrc);
@@ -178,41 +210,31 @@ export async function showProductCart(id) {
       // Optional: Update thumbnail borders to indicate the selected image
       $(".thumbnails").css("border-bottom", "none");
       $(this).css("border-bottom", "3px solid red");
-
-      /*Modal Box */
-      const $buyButton = $("#buyButton");
-      const $confirmationModal = $("#confirmationModal");
-      const $deliveryModal = $("#deliveryModal");
-      const $cancelModal = $("#cancelModal");
-      const $confirmBuy = $("#confirmBuy");
-      const $cancelBuy = $("#cancelBuy");
-      const $closeDeliveryModal = $("#closeDeliveryModal");
-      const $closeCancelModal = $("#closeCancelModal");
-
-      $("#BuyButton").on("click", function () {
-        $("#confirmationModal").removeClass("hidden");
-        console.log("#confirmationModal")
-      });
-
-      $confirmBuy.on("click", function () {
-        $confirmationModal.addClass("hidden");
-        $deliveryModal.removeClass("hidden");
-      });
-
-      $cancelBuy.on("click", function () {
-        $confirmationModal.addClass("hidden");
-        $cancelModal.removeClass("hidden");
-      });
-
-      $closeDeliveryModal.on("click", function () {
-        $deliveryModal.addClass("hidden");
-      });
-
-      $closeCancelModal.on("click", function () {
-        $cancelModal.addClass("hidden");
-      });
     });
-  })
+  });
+
+  // Modal Box Functionality
+  $("#BuyButton").on("click", function () {
+    $("#confirmationModal").removeClass("hidden");
+  });
+
+  $("#confirmBuy").on("click", function () {
+    $("#confirmationModal").addClass("hidden");
+    $("#deliveryModal").removeClass("hidden");
+  });
+
+  $("#cancelBuy").on("click", function () {
+    $("#confirmationModal").addClass("hidden");
+    $("#cancelModal").removeClass("hidden");
+  });
+
+  $("#closeDeliveryModal").on("click", function () {
+    $("#deliveryModal").addClass("hidden");
+  });
+
+  $("#closeCancelModal").on("click", function () {
+    $("#cancelModal").addClass("hidden");
+  });
 }
 
 export function discount(price, discountPercentage) {
@@ -222,19 +244,29 @@ export function discount(price, discountPercentage) {
 }
 
 export function updateSubtotal() {
-  // Select the subtotal DOM element and update its text content
-  const quantity = parseInt(document.getElementById('quantityInput').value);
-  const discountedPrice = parseFloat(document.getElementById('discountedPrice').textContent.replace(/[^\d.-]/g, ''));
+  const quantity = parseInt(document.getElementById("quantityInput").value);
+  const discountedPrice = parseFloat(
+    document
+      .getElementById("discountedPrice")
+      .textContent.replace(/[^\d.-]/g, "")
+  );
   const subtotal = discountedPrice * quantity;
 
-  // Select the subtotal DOM element and update its text content
-  const subtotalElement = document.getElementById('subtotalPrice');
+  const subtotalElement = document.getElementById("subtotalPrice");
 
-  // Ensure that the subtotal is formatted correctly to two decimal places
-  subtotalElement.textContent = `Rp ${subtotal.toLocaleString("id-ID", { minimumFractionDigits: 3, maximumFractionDigits: 99 })}`;
+  // Format subtotal with locale string and replace the first comma with a dot
+  let formattedSubtotal = subtotal.toLocaleString("id-ID", {
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  }).replace(",", "."); // Replace the first comma with a dot
+
+  // Append ",00" and update the text content
+  subtotalElement.textContent = `Rp ${formattedSubtotal},00`;
 }
 
+
 export function increaseQuantity() {
+  const quantityInput = document.getElementById("quantityInput");
   let quantity = parseInt(quantityInput.value);
   quantity += 1;
   quantityInput.value = quantity;
@@ -242,6 +274,7 @@ export function increaseQuantity() {
 }
 
 export function decreaseQuantity() {
+  const quantityInput = document.getElementById("quantityInput");
   let quantity = parseInt(quantityInput.value);
   if (quantity > 1) {
     quantity -= 1;
@@ -252,10 +285,12 @@ export function decreaseQuantity() {
 
 export function changeImage(imageSrc, imageNumber) {
   document.getElementById("currentImage").src = imageSrc;
-  // Reset all borders to none
+  
   let thumbnails = document.querySelectorAll(".thumbnails");
+  
   thumbnails.forEach((thumbnail, index) => {
-    thumbnail.style.borderBottom =
-      index === imageIndex ? "3px solid red" : "none";
+    // Apply a red border around the entire thumbnail if selected
+    thumbnail.style.borderBotom = 
+      index === imageNumber ? "3px solid red" : "none";
   });
 }
