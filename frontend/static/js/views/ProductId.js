@@ -9,7 +9,7 @@ export default class extends AbstractView {
 
     async getHtml(id) {
         return `
-           <div class="max-w-screen-xl mx-auto mt-10 p-4 text-white flex flex-col min-h-screen" id="productCart" onload=showProductCart(${id})>
+           <div class="max-w-screen-xl mx-auto mt-10 p-4 text-white flex flex-col min-h-screen" id="productCart" >
 
 </div>
         `;

@@ -1,8 +1,20 @@
-import { showBigProduct, showPromoProduct, showSmallProduct } from "./home.js";
+import {
+  getProductsByBigDiscount,
+  getProductsBySearchParams,
+  showBigProduct,
+  showPromoProduct,
+  showSmallProduct,
+} from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
-import { showProductCart,updateSubtotal,increaseQuantity,decreaseQuantity,changeImage } from "./product.js";
+import {
+  showProductCart,
+  updateSubtotal,
+  increaseQuantity,
+  decreaseQuantity,
+  changeImage,
+} from "./product.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -66,38 +78,94 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-    const url = window.location.pathname;
-    const id = url.split("/")[2];
-    if(id){
-        showProductCart(id)
-    } 
+  toggleHamburgerMenu();
 
-    router();
-    $("#promoProduct").css("width", "400px")
-    await showBigProduct()
-    await showPromoProduct()
-    await showSmallProduct()
+  const discountBtn = document.getElementById("bigDiscountBtn")
+  console.log(discountBtn)
+$("#bigDiscountBtn").on("click", () => {
+  console.log("terclick")
 });
 
+  const url = window.location.pathname;
+  const id = url.split("/")[2];
+  if (id) {
+    showProductCart(id);
+  }
+  const search = parseSearchURL();
+  console.log(search);
+  if (search) {
+    $("#searchResult").html(`Hasil penelusuran untuk ${search}`);
+    getProductsBySearchParams(search);
+  }
+
+  router();
+  $("#promoProduct").css("width", "400px");
+  await showBigProduct();
+  await showPromoProduct();
+  await showSmallProduct();
+});
+
+function parseSearchURL() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const params = urlParams.get("search");
+  if (params == "") {
+    window.location.href = "/";
+    return;
+  }
+  return params;
+}
+
+function toggleHamburgerMenu() {
+  const menuButton = document.querySelector(
+    'button[aria-controls="mobile-menu"]'
+  );
+  const mobileMenu = document.getElementById("mobile-menu");
+  const openIcon = menuButton.querySelector("svg:first-of-type");
+  const closeIcon = menuButton.querySelector("svg:last-of-type");
+
+  menuButton.addEventListener("click", function () {
+    const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", !isExpanded);
+
+    // Toggle mobile menu visibility
+    mobileMenu.classList.toggle("hidden");
+
+    // Toggle between open and close icons
+    openIcon.classList.toggle("hidden", isExpanded);
+    closeIcon.classList.toggle("hidden", !isExpanded);
+  });
+}
+
 $("#goHome").on("click", () => {
-    window.location.href = "/"
+  window.location.href = "/";
 });
 
 //product button functionality
 $("#decreaseQtt").on("click", () => {
-    decreaseQuantity();
-})
+  decreaseQuantity();
+});
 
 $("#increaseQtt").on("click", () => {
-    increaseQuantity();
-})
+  increaseQuantity();
+});
 
 $("#ghSyafiq").on("click", () => {
-  window.open("https://github.com/syafiqparadisam")
-})
-
+  window.open("https://github.com/syafiqparadisam");
+});
 
 $("#ghRafi").on("click", () => {
-  window.open("https://github.com/AfricanCLAM")
-})
+  window.open("https://github.com/AfricanCLAM");
+});
+
+// const searchInput = document.getElementById("searchInput");
+$("#searchInput").on("keydown", function searchInput(e) {
+  
+  $("#searchIcon").on("click", () => {
+    window.location.href = `/product?search=${e.target.value}`;
+  })
+  if (e.key == "Enter") {
+    window.location.href = `/product?search=${e.target.value}`;
+  }
+});
 
