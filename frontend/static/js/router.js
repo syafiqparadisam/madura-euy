@@ -92,8 +92,12 @@ $("#increaseQtt").on("click", () => {
     increaseQuantity();
 })
 
-// $("#decreaseQtt").on("click", () => {
-//     decreaseQuantity();
-// })
+$("#ghSyafiq").on("click", () => {
+  window.open("https://github.com/syafiqparadisam")
+})
 
+
+$("#ghRafi").on("click", () => {
+  window.open("https://github.com/AfricanCLAM")
+})
 

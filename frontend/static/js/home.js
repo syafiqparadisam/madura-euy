@@ -83,12 +83,12 @@ export async function showPromoProduct() {
     $("#promoProduct").append(`
       <a href="product/${data.id}">
         <div class="shadow-lg flex flex-col p-2 rounded-xl">
-            <div class="hp:w-[100px] hp:h-[100px] w-[50px] h-[50px] mx-auto flex flex-col overflow-hidden">
+            <div class="hp:w-[100px] w-[50px] mx-auto flex flex-col overflow-hidden">
                 <img src="${
                   data.image[0]
                 }" class="w-full h-full rounded-md object-center object-cover"/>
             </div>
-            <div class="flex flex-col w-full flex-wrap">
+            <div class="flex flex-col w-full h-full flex-wrap">
                 <div class="flex flex-col items-center">
                     <h1 class="hp:font-bold font-medium text-xs hp:text-sm leading-5 tablet:text-md">${
                       data.title

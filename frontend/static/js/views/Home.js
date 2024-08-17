@@ -17,8 +17,8 @@ export default class extends AbstractView {
 
             <!-- Promo -->
             <section class="flex w-4/5 mx-auto justify-between tablet:flex-row flex-col h-full shadow-lg rounded-xl">
-                <div class="tablet:w-1/5 w-full flex-col flex justify-around rounded-md py-10 px-4 bg-black text-white">
-                    <h2 class="font-bold tablet:text-lg laptop:text-lg text-md mb-3">Promo hari ini</h2>
+                <div class="tablet:w-1/5 w-full flex-col flex justify-around rounded-md py-3 hp:py-10 px-4 bg-black text-white">
+                    <h2 class="font-bold tablet:text-lg laptop:text-lg text-md hp:mb-3">Promo hari ini</h2>
                     <h2 class="font-bold tablet:text-lg laptop:text-4xl text-md hp:block hidden text-left tablet:text-center mb-3">Hingga 40%</h2>
                     <h5 class="hp:text-sm text-xs hp:block hidden">Dapatkan produk eksklusif kami dengan diskon spesial hanya untuk hari ini!</h5>
                 </div>
