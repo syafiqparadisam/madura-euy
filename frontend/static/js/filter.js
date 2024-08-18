@@ -1,14 +1,14 @@
-
-export function getProductWithLargestDiscount(products) {
-    return products.reduce((maxDiscountProduct, currentProduct) => {
-      if (!maxDiscountProduct || currentProduct.discount > maxDiscountProduct.discount) {
-        return currentProduct;
-      }
-      return maxDiscountProduct;
-    }, null);
-  }
-
-  
-export function getLargestDiscount() {
-  console.log("terclick jancok")
+export function sortByLargeDiscount(products) {
+  return products.sort((a, b) => b.discount - a.discount);
 }
+
+export function sortByNewestProduct(products) {
+  return products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+}
+
+
+export function sortByOldProduct(products) {
+  return products.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+}
+
+
