@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
-const port = process.env.PORT || 3000
+
+// Jika port conflict, maka ubah variabel ini menjadi port yang tidak conflict misalnya port 5000
+const port = 3000
 
 const app = express();
 
