@@ -11,19 +11,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                },
+                screens: {
+                    "hp": "400px",
+                    'tablet': '640px',
+                    'laptop': '1024px',
+                    'desktop': '1280px',
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="flex h-screen flex-col flex-wrap w-full justify-center items-center">
         <img src="https://res.cloudinary.com/dktwq4f3f/image/upload/v1716340580/notfound_s2tqyt.jpg" width="500px"
             class="mt-14" />
-        <div class="flex flex-col w-1/5 flex-wrap justify-center text-center items-center">
+        <div class="flex flex-col w-full tablet:w-2/5 flex-wrap justify-center text-center items-center">
 
-            <h1 class="font-bold text-3xl">Not Found</d>
-                <button class="py-2 mt-4 px-6 bg-black font-bold text-white rounded-lg text-center text-md" onclick="goHome()">
-                    <i class="bi bi-arrow-left"></i>
-                    Back
-                </button>
+            <h1 class="font-bold text-xl hp:text-3xl">Not Found</h1>
+            <div class="py-2 mt-4 bg-black w-2/5 tablet:w-1/5 flex justify-center items-center gap-1 font-bold text-white rounded-lg text-center text-xs hp:text-md"
+                onclick="goHome()">
+                <i class="bi bi-arrow-left hidden hp:block hp:text-md"></i>
+                <p>Back</p>
+            </div>
         </div>
     </div>
 

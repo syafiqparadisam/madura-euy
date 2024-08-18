@@ -20,6 +20,14 @@ app.get("/product/:id", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 
+// Route for products pages with params
+app.get("/product", (req, res) => {
+    if (!req.query.hasOwnProperty("search")) {
+        res.sendFile(path.resolve(__dirname, "frontend", "404.html"));
+    }
+    res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
+});
+
 
 app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "404.html"));
