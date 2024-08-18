@@ -1,5 +1,4 @@
 import {
-  getProductsByBigDiscount,
   getProductsBySearchParams,
   showBigProduct,
   showPromoProduct,
@@ -82,9 +81,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const discountBtn = document.getElementById("bigDiscountBtn")
   console.log(discountBtn)
-$("#bigDiscountBtn").on("click", () => {
-  console.log("terclick")
-});
 
   const url = window.location.pathname;
   const id = url.split("/")[2];
@@ -94,7 +90,7 @@ $("#bigDiscountBtn").on("click", () => {
   const search = parseSearchURL();
   console.log(search);
   if (search) {
-    $("#searchResult").html(`Hasil penelusuran untuk ${search}`);
+   
     getProductsBySearchParams(search);
   }
 
@@ -158,7 +154,6 @@ $("#ghRafi").on("click", () => {
   window.open("https://github.com/AfricanCLAM");
 });
 
-// const searchInput = document.getElementById("searchInput");
 $("#searchInput").on("keydown", function searchInput(e) {
   
   $("#searchIcon").on("click", () => {
@@ -168,4 +163,3 @@ $("#searchInput").on("keydown", function searchInput(e) {
     window.location.href = `/product?search=${e.target.value}`;
   }
 });
-
