@@ -320,15 +320,15 @@
       "variants": [
           {
               "variant": "450ml",
-              "price": 50000
+              "price": 5000
           },
           {
               "variant": "600ml",
-              "price": 65000
+              "price": 6500
           },
           {
               "variant": "1kg",
-              "price": 100000
+              "price": 10000
           }
       ]
     },

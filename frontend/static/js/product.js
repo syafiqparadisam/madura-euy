@@ -159,7 +159,11 @@ export async function showProductCart(id) {
       </div>
     `);
 
-    // console.log(product.variants);
+    const basePrice = data.price;
+    currentVariantPrice = data.price;
+
+    $("#discountedPrice").text(toRupiah(currentVariantPrice));
+    updateSubtotal();
 
     // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
@@ -210,20 +214,29 @@ export async function showProductCart(id) {
   });
 
   //dynamic pricing based on Variants
-  $("#variantSelect").on("change", function () {
-    const selectedVariant = $(this).val();
-    const variant = product.variants.find(v => v.variant === selectedVariant);
-    
-    if (variant) {
-      currentVariantPrice = Number(variant.price); // Store the selected variant price
-      const newDiscountedPrice = discount(currentVariantPrice, data.discount);
-      
-      $("#discountedPrice").text(toRupiah(newDiscountedPrice));
-      
-      // Call updateSubtotal to apply the new variant price
-      updateSubtotal();
-    }
-  });
+  // Check if the selected variant exists in the product
+$("#variantSelect").on("change", function () {
+  const selectedVariant = $(this).val();
+  const variant = product.variants.find(v => v.variant === selectedVariant);
+  
+  if (variant) {
+    // Log the variant price for debugging
+    console.log('Selected Variant Price:', variant.price);
+
+    currentVariantPrice = Number(variant.price); // Update the current variant price
+    const newDiscountedPrice = discount(currentVariantPrice, data.discount);
+
+    // Log the new discounted price for debugging
+    console.log('New Discounted Price:', newDiscountedPrice);
+
+    $("#discountedPrice").text(toRupiah(newDiscountedPrice));
+
+    // Update the subtotal
+    updateSubtotal();
+  } else {
+    console.error('Variant not found for selection:', selectedVariant);
+  }
+});
 }
 
 export function discount(price, discountPercentage) {
@@ -237,34 +250,28 @@ let currentVariantPrice = null; // Store the current variant price
 export function updateSubtotal() {
   const quantity = parseInt(document.getElementById("quantityInput").value);
 
-  // Use currentVariantPrice if available, otherwise get the discounted price from the DOM
-  let priceToUse = currentVariantPrice || parseFloat(
-    document.getElementById("discountedPrice").textContent.replace(/[^\d.-]/g, "")
-  );
+  // Use currentVariantPrice if selected, otherwise fall back to data.price (base price)
+  let priceToUse = currentVariantPrice || data.price;
 
-  // Check if priceToUse is a valid number
-  if (isNaN(priceToUse)) {
-    priceToUse = 0; // Default to 0 if the price is invalid
-  }
+  console.log('Current Variant Price:', currentVariantPrice);
+  console.log('Price to Use for Subtotal:', priceToUse);
 
-  // Calculate the subtotal
+  // Calculate subtotal
   const subtotal = priceToUse * quantity;
 
-  const subtotalElement = document.getElementById("subtotalPrice");
-
-  // Format the subtotal to Indonesian Rupiah format
+  // Format the subtotal
   let formattedSubtotal = subtotal.toLocaleString("id-ID", {
-    minimumFractionDigits: 0,  // No decimals
-    maximumFractionDigits: 0,  // No decimals
-  }).replace(/\B(?=(\d{3})+(?!\d))/g , ".");
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-  // Add ",00" for Indonesian currency formatting
   formattedSubtotal += ",00";
 
-  // Update the subtotal element with the formatted value
-  subtotalElement.textContent = `Rp ${formattedSubtotal}`;
-}
+  // Update the subtotal element
+  document.getElementById("subtotalPrice").textContent = `Rp ${formattedSubtotal}`;
 
+  console.log('Formatted Subtotal:', formattedSubtotal);
+}
 
 export function increaseQuantity() {
   const quantityInput = document.getElementById("quantityInput");
