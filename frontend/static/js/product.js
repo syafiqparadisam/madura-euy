@@ -71,7 +71,7 @@ export async function showProductCart(id) {
             id="currentImage"
               src="${data.image[0]}"
               alt="Product Image"
-              class="object-contain h-full w-full"
+              class="object-cover h-full w-full"
             />
           </div>
           <!-- Carousel Thumbnails -->
@@ -254,18 +254,17 @@ export function updateSubtotal() {
 
   // Format the subtotal to Indonesian Rupiah format
   let formattedSubtotal = subtotal.toLocaleString("id-ID", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    minimumFractionDigits: 0,  // No decimals
+    maximumFractionDigits: 0,  // No decimals
+  }).replace(/\B(?=(\d{3})+(?!\d))/g , ".");
 
-  // Only add ",00" if it doesn't already exist
-  if (!formattedSubtotal.endsWith(",00")) {
-    formattedSubtotal += ",00";
-  }
+  // Add ",00" for Indonesian currency formatting
+  formattedSubtotal += ",00";
 
   // Update the subtotal element with the formatted value
   subtotalElement.textContent = `Rp ${formattedSubtotal}`;
 }
+
 
 export function increaseQuantity() {
   const quantityInput = document.getElementById("quantityInput");
