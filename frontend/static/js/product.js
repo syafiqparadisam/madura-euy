@@ -140,6 +140,17 @@ export async function showProductCart(id) {
             </p>
           </div>
     
+          <div>
+            <label for="TransactionMethod">Metode Transaksi:</label>
+            <select
+              id="TransactionMethod"
+              class="w-full p-2 bg-white border border-gray-300 rounded"
+            >
+            <option>Cash on Delivery</option>
+            <option>Delivery</option>
+            </select>
+          </div>
+
           <!-- Notes Section -->
           <div class="space-y-2">
             <label for="catatan" class="block text-gray-600">Catatan:</label>
@@ -215,28 +226,30 @@ export async function showProductCart(id) {
 
   //dynamic pricing based on Variants
   // Check if the selected variant exists in the product
-$("#variantSelect").on("change", function () {
-  const selectedVariant = $(this).val();
-  const variant = product.variants.find(v => v.variant === selectedVariant);
+  $("#variantSelect").on("change", function () {
+    const selectedVariant = $(this).val();
+    const variant = product.variants.find(v => v.variant === selectedVariant);
+    
+    if (variant) {
+      // Log the variant price for debugging
+      console.log('Selected Variant Price:', variant.price);
   
-  if (variant) {
-    // Log the variant price for debugging
-    console.log('Selected Variant Price:', variant.price);
-
-    currentVariantPrice = Number(variant.price); // Update the current variant price
-    const newDiscountedPrice = discount(currentVariantPrice, data.discount);
-
-    // Log the new discounted price for debugging
-    console.log('New Discounted Price:', newDiscountedPrice);
-
-    $("#discountedPrice").text(toRupiah(newDiscountedPrice));
-
-    // Update the subtotal
-    updateSubtotal();
-  } else {
-    console.error('Variant not found for selection:', selectedVariant);
-  }
-});
+      currentVariantPrice = Number(variant.price); // Update the current variant price
+      const newDiscountedPrice = discount(currentVariantPrice, product.discount); // Use product.discount here
+  
+      // Log the new discounted price for debugging
+      console.log(currentVariantPrice, product.discount);
+      console.log('New Discounted Price:', newDiscountedPrice);
+  
+      $("#discountedPrice").text(toRupiah(newDiscountedPrice));
+      $("#originalPrice").text(toRupiah(currentVariantPrice));
+  
+      // Update the subtotal
+      updateSubtotal();
+    } else {
+      console.error('Variant not found for selection:', selectedVariant);
+    }
+  });
 }
 
 export function discount(price, discountPercentage) {
@@ -250,15 +263,29 @@ let currentVariantPrice = null; // Store the current variant price
 export function updateSubtotal() {
   const quantity = parseInt(document.getElementById("quantityInput").value);
 
-  // Use currentVariantPrice if selected, otherwise fall back to data.price (base price)
-  let priceToUse = currentVariantPrice || data.price;
+  // Determine the price to use for subtotal calculation
+  let priceToUse;
+  // Prioritize newDiscountedPrice if available
+  if (typeof newDiscountedPrice !== "undefined" && !isNaN(newDiscountedPrice)) {
+    priceToUse = newDiscountedPrice;
+  } 
+  // Then, use currentVariantPrice if available
+  else if (typeof currentVariantPrice !== "undefined" && !isNaN(currentVariantPrice)) {
+    priceToUse = currentVariantPrice;
+  } 
+  // Otherwise, fallback to base data.price
+  else {
+    priceToUse = data.price;
+  }
 
   console.log('Current Variant Price:', currentVariantPrice);
   console.log('Price to Use for Subtotal:', priceToUse);
 
   // Calculate subtotal
+  // const discountedPriceToUse = discount(priceToUse, data.discount);
+  
   const subtotal = priceToUse * quantity;
-
+  
   // Format the subtotal
   let formattedSubtotal = subtotal.toLocaleString("id-ID", {
     minimumFractionDigits: 0,
