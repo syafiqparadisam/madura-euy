@@ -1,7 +1,7 @@
 import { toRupiah } from "./home.js";
 
 export async function showProductCart(id) {
-  const data = await fetch("../../../data.json")
+  const data = await fetch("../../../data.json");
   const products = await data.json();
 
   const product = products.find((product) => product.id == id);
@@ -25,9 +25,10 @@ export async function showProductCart(id) {
 
     let imagesContainer = [];
     for (let i = 0; i <= data.image.length - 1; i++) {
-      imagesContainer.push(`<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer bg-gray-200 rounded-md shadow-md" data-index="${i}">`)
+      imagesContainer.push(
+        `<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer bg-gray-200 rounded-md shadow-md" data-index="${i}">`
+      );
     }
-
 
     $("#productCart").append(`
       <!-- Confirmation Modal -->
@@ -63,7 +64,9 @@ export async function showProductCart(id) {
         <div class="space-y-4">
           <!-- Product Title Container -->
           <div class="g-gray-100 p-2 rounded-md shadow-md hp:block hidden" id="mainTitle">
-            <h1 id="productTitle" class="text-lg font-bold text-black text-center">${data.title}</h1>
+            <h1 id="productTitle" class="text-lg font-bold text-black text-center">${
+              data.title
+            }</h1>
             </div>
             <!-- Main Product Image -->
             <div id="mainImage" class="w-full h-72 bg-gray-100 flex justify-center items-center rounded-md shadow-md">
@@ -76,7 +79,7 @@ export async function showProductCart(id) {
           </div>
           <!-- Carousel Thumbnails -->
           <div id="thumbnailContainer" class="flex hp:flex-wrap tablet:flex-nowrap justify-between p-3">
-            ${imagesContainer.join('')}
+            ${imagesContainer.join("")}
           </div>
         </div>
     
@@ -85,15 +88,25 @@ export async function showProductCart(id) {
           <!-- Pricing and Rating Section -->
           <div class="bg-gray-100 text-black p-4 space-y-2 rounded-md shadow-md">
             <p class="text-lg">
-              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${data.title}</h1>
-              <span id="originalPrice" class="line-through">${toRupiah(data.price)}</span>
-              <span id="discountedPrice" class="font-semibold text-xl">${toRupiah(discount(data.price, data.discount))}</span>
-              <span id="soldTotal" class="font-light text-m">(${data.soldTotal})</span>
+              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
+                data.title
+              }</h1>
+              <span id="originalPrice" class="line-through">${toRupiah(
+                data.price
+              )}</span>
+              <span id="discountedPrice" class="font-semibold text-xl">${toRupiah(
+                discount(data.price, data.discount)
+              )}</span>
+              <span id="soldTotal" class="font-light text-m">(${
+                data.soldTotal
+              })</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
             </div>
-            <p id="discountText" class="text-red-500">Diskon ${data.discount}%</p>
+            <p id="discountText" class="text-red-500">Diskon ${
+              data.discount
+            }%</p>
             <p id="productLocation" class="text-lg">Lokasi: ${data.location}</p>
           </div>
     
@@ -115,7 +128,7 @@ export async function showProductCart(id) {
               id="variantSelect"
               class="w-full p-2 bg-white border border-gray-300 rounded"
             >
-              ${VariantsContainer.join('')}
+              ${VariantsContainer.join("")}
             </select>
           </div>
           <div class="flex flex-wrap items-center space-x-4">
@@ -129,14 +142,18 @@ export async function showProductCart(id) {
               readonly
             />
             <button class="px-4 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
-            <span id="stockCount" class="text-gray-500">Stok: ${data.stock}</span>
+            <span id="stockCount" class="text-gray-500">Stok: ${
+              data.stock
+            }</span>
           </div>
     
           <!-- Pricing Section (with Dynamic Subtotal) -->
           <div class="space-y-1">
             <p class="text-sm text-gray-500">Subtotal</p>
             <p class="text-lg font-semibold text-gray-900">
-              <span id="subtotalPrice" class="text-xl">${toRupiah(discount(data.price, data.discount))}</span>
+              <span id="subtotalPrice" class="text-xl">
+                ${toRupiah(discount(data.price, data.discount))}
+              </span>
             </p>
           </div>
     
@@ -169,12 +186,6 @@ export async function showProductCart(id) {
         </div>
       </div>
     `);
-
-    const basePrice = data.price;
-    currentVariantPrice = data.price;
-
-    $("#discountedPrice").text(toRupiah(currentVariantPrice));
-    updateSubtotal();
 
     // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
@@ -228,76 +239,46 @@ export async function showProductCart(id) {
   // Check if the selected variant exists in the product
   $("#variantSelect").on("change", function () {
     const selectedVariant = $(this).val();
-    const variant = product.variants.find(v => v.variant === selectedVariant);
-    
-    if (variant) {
-      // Log the variant price for debugging
-      console.log('Selected Variant Price:', variant.price);
-  
-      currentVariantPrice = Number(variant.price); // Update the current variant price
-      const newDiscountedPrice = discount(currentVariantPrice, product.discount); // Use product.discount here
-  
-      // Log the new discounted price for debugging
-      console.log(currentVariantPrice, product.discount);
-      console.log('New Discounted Price:', newDiscountedPrice);
-  
-      $("#discountedPrice").text(toRupiah(newDiscountedPrice));
-      $("#originalPrice").text(toRupiah(currentVariantPrice));
-  
-      // Update the subtotal
-      updateSubtotal();
-    } else {
-      console.error('Variant not found for selection:', selectedVariant);
-    }
+    const variant = product.variants.find((v) => v.variant === selectedVariant);
+   
+
+    let currentVariantPrice = Number(variant.price); // Update the current variant price
+
+    const newDiscountedPrice = discount(currentVariantPrice, product.discount); // Use product.discount here
+
+    $("#discountedPrice").text(toRupiah(newDiscountedPrice));
+    $("#originalPrice").text(toRupiah(currentVariantPrice));
+
+    let price = parseRupiahToInteger();
+    updateSubtotal(price);
   });
 }
 
-export function discount(price, discountPercentage) {
+function discount(price, discountPercentage) {
   const discountAmount = price * (discountPercentage / 100);
   const discountedPrice = price - discountAmount;
   return discountedPrice;
 }
 
-let currentVariantPrice = null; // Store the current variant price
 
-export function updateSubtotal() {
+export function updateSubtotal(price) {
   const quantity = parseInt(document.getElementById("quantityInput").value);
 
-  // Determine the price to use for subtotal calculation
-  let priceToUse;
-  // Prioritize newDiscountedPrice if available
-  if (typeof newDiscountedPrice !== "undefined" && !isNaN(newDiscountedPrice)) {
-    priceToUse = newDiscountedPrice;
-  } 
-  // Then, use currentVariantPrice if available
-  else if (typeof currentVariantPrice !== "undefined" && !isNaN(currentVariantPrice)) {
-    priceToUse = currentVariantPrice;
-  } 
-  // Otherwise, fallback to base data.price
-  else {
-    priceToUse = data.price;
-  }
+  const subtotal = price * quantity;
 
-  console.log('Current Variant Price:', currentVariantPrice);
-  console.log('Price to Use for Subtotal:', priceToUse);
-
-  // Calculate subtotal
-  // const discountedPriceToUse = discount(priceToUse, data.discount);
-  
-  const subtotal = priceToUse * quantity;
-  
   // Format the subtotal
-  let formattedSubtotal = subtotal.toLocaleString("id-ID", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  let formattedSubtotal = subtotal
+    .toLocaleString("id-ID", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   formattedSubtotal += ",00";
-
   // Update the subtotal element
-  document.getElementById("subtotalPrice").textContent = `Rp ${formattedSubtotal}`;
-
-  console.log('Formatted Subtotal:', formattedSubtotal);
+  document.getElementById(
+    "subtotalPrice"
+  ).textContent = `Rp ${formattedSubtotal}`;
 }
 
 export function increaseQuantity() {
@@ -305,7 +286,14 @@ export function increaseQuantity() {
   let quantity = parseInt(quantityInput.value);
   quantity += 1;
   quantityInput.value = quantity;
-  updateSubtotal();
+  const price = parseRupiahToInteger();
+  updateSubtotal(price);
+}
+
+function parseRupiahToInteger() {
+  let price = document.getElementById("discountedPrice").textContent;
+  price = parseInt(price.replace(/[^0-9,-]+/g, "").replace(",", "")) / 100;
+  return price;
 }
 
 export function decreaseQuantity() {
@@ -314,7 +302,8 @@ export function decreaseQuantity() {
   if (quantity > 1) {
     quantity -= 1;
     quantityInput.value = quantity;
-    updateSubtotal();
+    const price = parseRupiahToInteger();
+    updateSubtotal(price);
   }
 }
 

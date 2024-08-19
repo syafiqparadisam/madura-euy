@@ -9,10 +9,8 @@ import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
 import {
   showProductCart,
-  updateSubtotal,
   increaseQuantity,
   decreaseQuantity,
-  changeImage,
 } from "./product.js";
 
 const pathToRegex = (path) =>
@@ -80,7 +78,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   toggleHamburgerMenu();
 
   const discountBtn = document.getElementById("bigDiscountBtn")
-  console.log(discountBtn)
 
   const url = window.location.pathname;
   const id = url.split("/")[2];
@@ -88,7 +85,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     showProductCart(id);
   }
   const search = parseSearchURL();
-  console.log(search);
   if (search) {
    
     getProductsBySearchParams(search);

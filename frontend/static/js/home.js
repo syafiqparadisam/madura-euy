@@ -131,7 +131,6 @@ export async function getProductsBySearchParams(params) {
   }
   handleFilter(products, params);
 
-  console.log(products);
   appendProduct(products);
 }
 
@@ -192,7 +191,6 @@ function handleFilter(product, params) {
       return;
     }
     appendProduct(products);
-    console.log(products);
   });
 
   $("#terbaruBtn").on("click", () => {
@@ -206,7 +204,6 @@ function handleFilter(product, params) {
       return;
     }
     appendProduct(products);
-    console.log(products);
   });
 
   $("#terlamaBtn").on("click", () => {
@@ -220,7 +217,6 @@ function handleFilter(product, params) {
       return;
     }
     appendProduct(products);
-    console.log(products);
   });
 }
 
@@ -235,5 +231,5 @@ export function toRupiah(price) {
 
 function shortTitle(title) {
   const words = title.split(" ");
-  return words.slice(0, 3).join(" ");
+  return words.slice(0, 2).join(" ");
 }
