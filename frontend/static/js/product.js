@@ -20,23 +20,23 @@ export async function showProductCart(id) {
 
     let VariantsContainer = [];
     for (let i = 0; i <= data.variants.length - 1; i++) {
-      VariantsContainer.push(`<option>${data.variants[i].variant}</option>`);
+      VariantsContainer.push(`<option  class="w-full p-2 bg-white rounded-md">${data.variants[i].variant}</option>`);
     }
 
     let imagesContainer = [];
     for (let i = 0; i <= data.image.length - 1; i++) {
       imagesContainer.push(
-        `<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer bg-gray-200 rounded-md shadow-md" data-index="${i}">`
+        `<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer rounded-md shadow-md" data-index="${i}">`
       );
     }
 
     $("#productCart").append(`
       <!-- Confirmation Modal -->
       <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
           <p class="text-lg text-black font-semibold">Apakah kamu yakin ingin membeli Produk ini?</p>
           <div class="flex justify-end mt-4">
-            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2">YA</button>
+            <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2 w-auto">YA</button>
             <button id="cancelBuy" class="px-4 py-2 bg-red-500 text-white rounded">BATAL</button>
           </div>
         </div>
@@ -44,32 +44,36 @@ export async function showProductCart(id) {
     
       <!-- Delivery Modal -->
       <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg text-black font-semibold">Di tunggu ya,barang sedang diantar :)</p>
-          <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
+          <p class="text-lg text-black font-semibold">Di tunggu ya,barang sedang diantar &#128516;</p>
+          <div class="flex justify-end">
+            <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4 inline-block w-auto">OK</button>
+          </div>
         </div>
       </div>
-    
+
       <!-- Cancel Modal -->
       <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg">
-          <p class="text-lg text-black font-semibold">Transaksi dibatalkan :(</p>
-          <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">OK</button>
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
+          <p class="text-lg text-black font-semibold">Transaksi dibatalkan &#128531;</p>
+          <div class="flex justify-end">
+            <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4 inline-block w-auto">OK</button>
+          </div>
         </div>
       </div>
-    
+
       <!-- Grid Layout for Main Content -->
       <div class="grid grid-cols-1 hp:grid-cols-2 tablet:grid-cols-3 gap-4 flex-grow">
         <!-- Left Section: Product Image, Title, and Carousel -->
         <div class="space-y-4">
           <!-- Product Title Container -->
-          <div class="g-gray-100 p-2 rounded-md shadow-md hp:block hidden" id="mainTitle">
-            <h1 id="productTitle" class="text-lg font-bold text-black text-center">${
-              data.title
-            }</h1>
+          <div class=" rounded-md hp:block hidden" id="mainTitle">
+            <h1 id="productTitle" class="text-3xl font-bold text-black text-center  border-black">
+            ${data.title}
+            </h1>
             </div>
             <!-- Main Product Image -->
-            <div id="mainImage" class="w-full h-72 bg-gray-100 flex justify-center items-center rounded-md shadow-md">
+            <div id="mainImage" class="w-full h-80 flex justify-center items-center rounded-md overflow-hidden">
             <img
             id="currentImage"
               src="${data.image[0]}"
@@ -86,36 +90,39 @@ export async function showProductCart(id) {
         <!-- Middle Section: Product Details -->
         <div class="space-y-4">
           <!-- Pricing and Rating Section -->
-          <div class="bg-gray-100 text-black p-4 space-y-2 rounded-md shadow-md">
+          <div class="text-black p-4 space-y-2 rounded-md">
             <p class="text-lg">
-              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
-                data.title
-              }</h1>
-              <span id="originalPrice" class="line-through">${toRupiah(
-                data.price
-              )}</span>
-              <span id="discountedPrice" class="font-semibold text-xl">${toRupiah(
-                discount(data.price, data.discount)
-              )}</span>
-              <span id="soldTotal" class="font-light text-m">(${
-                data.soldTotal
-              })</span>
+              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${data.title
+      }</h1>
+      <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
+        discount(data.price, data.discount)
+        )}</span>
+        <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
+        <br />
+         <span id="originalPrice" class="line-through">${toRupiah(
+          data.price
+       )}</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
             </div>
-            <p id="discountText" class="text-red-500">Diskon ${
-              data.discount
-            }%</p>
-            <p id="productLocation" class="text-lg">Lokasi: ${data.location}</p>
+            <p id="discountText" class="fw-bold">Diskon ${data.discount
+      }%</p>
+            <p id="productLocation" class="text-lg">
+            <span class="fw-bold">Lokasi:</span> 
+            ${data.location}
+            </p>
           </div>
     
           <!-- Product Description -->
-          <div class="bg-gray-100 text-black p-4 rounded-md shadow-md">
+          <div class="text-black p-4 rounded-md shadow-md">
             <p id="productDescription">
-              Deskripsi Produk:
+              <span class="fw-bold  ">Deskripsi Produk:</span>
+              <br />
               ${data.description}
+
             </p>
+            
           </div>
         </div>
     
@@ -131,20 +138,19 @@ export async function showProductCart(id) {
               ${VariantsContainer.join("")}
             </select>
           </div>
-          <div class="flex flex-wrap items-center space-x-4">
+          <div class="flex items-center space-x-2">
             <label>Quantity:</label>
-            <button class="px-4 py-2 bg-slate-700 text-white rounded" id="decreaseQtt">-</button>
+            <button class="px-3 py-2 bg-slate-700 text-white rounded" id="decreaseQtt">-</button>
             <input
               id="quantityInput"
               type="text"
               value="1"
-              class="mx-2 text-center w-12 bg-white border border-gray-300 rounded"
+              class="text-center w-10 bg-white border border-gray-300 rounded"
               readonly
             />
-            <button class="px-4 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
-            <span id="stockCount" class="text-gray-500">Stok: ${
-              data.stock
-            }</span>
+            <button class="px-3 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
+            <span id="stockCount" class="text-gray-500">Stok: ${data.stock
+      }</span>
           </div>
     
           <!-- Pricing Section (with Dynamic Subtotal) -->
@@ -240,7 +246,7 @@ export async function showProductCart(id) {
   $("#variantSelect").on("change", function () {
     const selectedVariant = $(this).val();
     const variant = product.variants.find((v) => v.variant === selectedVariant);
-   
+
 
     let currentVariantPrice = Number(variant.price); // Update the current variant price
 

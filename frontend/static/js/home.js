@@ -16,39 +16,35 @@ export async function showBigProduct() {
     }
     let totalStarsWithoutFill = 5 - data.rating;
     for (let i = 1; i <= totalStarsWithoutFill; i++) {
-      starsHtml += `<i class="bi bi-star  tablet:text-md text-xs"></i>`;
+      starsHtml += `<i class="bi bi-star  tablet:text-xs text-xs"></i>`;
     }
 
     $("#bigProduct").append(`
-          <a href="product/${data.id}" class="nav__link cardProducts" data-link>
-            <div class="shadow-md p-3 flex flex-col m-auto rounded-md cursor-pointer">
-              <div class="flex flex-col overflow-hidden m-auto rounded-md justify-center items-center tablet:h-[120px] tablet:w-[120px] hp:w-[70px] hp:h-[70px] h-[70px] w-[70px]">
-                  <img src="${
-                    data.image[0]
-                  }" class="rounded-md w-full h-full object-cover object-center mx-auto" />
-              </div>
-              <div class="flex flex-col tablet:w-48 hp:w-32 w-24 flex-wrap mt-3">
-                  <div class="flex flex-col flex-wrap">
-                      <h1 class="font-bold text-wrap tablet:text-lg hp:text-md leading-1 text-sm overflow-hidden">${
-                        shortTitle(data.title)
-                      }</h1>
-                      <p class="font-bold lh-1 tablet:text-lg hp:text-md text-sm">${toRupiah(
-                        data.price
-                      )}</p>
-                  </div>
-                  <p class="text-sm tablet:text-md">Stock: ${data.stock}</p>
-                  <div class="flex items-center">
-                      <div class="flex gap-1 items-center ">
-                        ${starsHtml}
-                      </div>
-                      <p class="ml-2 font-bold tablet:text-md hp:text-sm text-xs">${
-                        data.rating
-                      }.0</p>
-                  </div>
-              </div>
+      <a href="product/${data.id}" class="nav__link cardProducts" data-link>
+        <div class="shadow-md p-3 flex flex-col m-auto rounded-md cursor-pointer mh-25">
+          <div class="flex flex-col overflow-hidden m-auto rounded-md justify-center items-center tablet:h-[120px] tablet:w-[120px] hp:w-[70px] hp:h-[70px] h-[70px] w-[70px]">
+            <img src="${data.image[0]}" class="rounded-md w-full h-full object-cover object-center mx-auto" />
           </div>
-          </a>
-          `);
+          <div class="flex flex-col tablet:w-48 hp:w-32 w-24 flex-wrap mt-3">
+            <div class="flex flex-col flex-wrap">
+              <h1 class="font-bold text-wrap tablet:text-xs hp:text-md leading-1 text-sm overflow-hidden">${shortTitle(data.title)}</h1>
+              <p class="font-bold lh-1 tablet:text-lg hp:text-xs text-sm">${toRupiah(data.price)}</p>
+            </div>
+            <p class="text-sm tablet:text-md">Stock: ${data.stock}</p>
+            <div class="flex items-center">
+              <div class="flex gap-1 items-center ">
+                ${starsHtml}
+              </div>
+              <p class="ml-2 font-bold tablet:text-md hp:text-sm text-xs">${data.rating}.0</p>
+            </div>
+            <div class="flex gap-2 items-center">
+              <i class="bi bi-house-fill"></i>
+              <p class="font-bold tablet:text-md hp:text-sm text-xs">${data.location}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    `);
   });
 }
 
@@ -56,17 +52,17 @@ export async function showSmallProduct() {
   const data = await fetch("data.json");
 
   const products = await data.json();
-  const smallProducts = products.filter((product) => product.id <= 5);
+  const smallProducts = products.filter((product) => product.id <= 6);
 
   smallProducts.map((data) => {
     $("#smallProduct").append(`
        <a href="product/${data.id}" class="nav__link cardProducts" data-link>
-            <div class="shadow-md py-5 m-auto flex flex-col md:m-6 rounded-md cursor-pointer">
+            <div class="shadow-md pb-3 m-auto flex flex-col md:m-6 rounded-md cursor-pointer justify-content-start">
               <div class="hp:w-[120px] w-[70px] h-[70px] hp:h-[120px]  m-auto flex overflow-hidden items-center justify-center">
                   <img src="${data.image[0]}" class="rounded-md object-cover w-full h-full object-center" />
               </div>
               <div class="flex justify-center mx-auto hp:w-full w-4/5  flex-wrap">
-                      <h1 class="font-bold text-xs text-wrap text-center hp:text-md">${shortTitle(data.title)}</h1>
+                      <h1 class="pt-1 font-bold text-xs text-wrap text-center hp:text-md">${shortTitle(data.title)}</h1>
               </div>
           </div>
           </a>
@@ -85,24 +81,20 @@ export async function showPromoProduct() {
   promoProducts.map((data) => {
     $("#promoProduct").append(`
       <a href="product/${data.id}">
-        <div class="shadow-lg flex flex-col p-2 rounded-xl">
-            <div class="hp:w-[100px] w-[50px] mx-auto flex flex-col overflow-hidden">
-                <img src="${
-                  data.image[0]
-                }" class="w-full h-full rounded-md object-center object-cover"/>
+        <div class="shadow-sm flex flex-col p-2 rounded-xl">
+          <div class="hp:w-[100px] w-auto mx-auto flex flex-col overflow-hidden h-[100px]">
+            <img src="${data.image[0]}" class="w-full h-full rounded-md object-center object-cover"/>
+          </div>
+          <div class="flex flex-col w-full h-full flex-wrap">
+            <div class="flex flex-col items-center">
+              <h1 class="hp:font-bold font-medium text-xs hp:text-sm leading-5 tablet:text-md">${shortTitle(data.title)}</h1>
+              <p class="leading-5 tablet:text-lg hp:text-md font-bold text-xs">
+                ${toRupiah(data.price)}
+              </p>
             </div>
-            <div class="flex flex-col w-full h-full flex-wrap">
-                <div class="flex flex-col items-center">
-                    <h1 class="hp:font-bold font-medium text-xs hp:text-sm leading-5 tablet:text-md">${
-                      shortTitle(data.title)
-                    }</h1>
-                    <p class="leading-5 tablet:text-lg hp:text-md font-bold text-xs">
-                      ${toRupiah(data.price)}
-                    </p>
-                </div>
-            </div>
+          </div>
         </div>
-    </a>
+      </a>
     `);
   });
 }
