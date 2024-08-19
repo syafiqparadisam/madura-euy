@@ -283,7 +283,9 @@ export function updateSubtotal() {
 
   // Calculate subtotal
   // const discountedPriceToUse = discount(priceToUse, data.discount);
-  
+
+
+  const discountedPriceToUse = discount(priceToUse, data.discount);
   const subtotal = priceToUse * quantity;
   
   // Format the subtotal
