@@ -224,6 +224,7 @@ export async function showProductCart(id) {
   });
 
   $("#confirmBuy").on("click", function () {
+    updateBadgeValue();
     $("#confirmationModal").addClass("hidden");
     $("#deliveryModal").removeClass("hidden");
   });
@@ -323,4 +324,13 @@ export function changeImage(imageSrc, imageNumber) {
     thumbnail.style.borderBotom =
       index === imageNumber ? "3px solid red" : "none";
   });
+}
+
+function updateBadgeValue() {
+  let storedValue = parseInt(sessionStorage.getItem('cartBadgeValue'));
+  let increment = storedValue + 1;
+  sessionStorage.setItem('cartBadgeValue', increment.toString());
+  $("badgeRound").toggleClass("hidden");
+  $("#notification").text(increment);
+
 }

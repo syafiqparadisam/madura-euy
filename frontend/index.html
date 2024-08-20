@@ -93,14 +93,15 @@
                         class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
                     </ul>
                 </div>
-                <div class="right-0 hidden items-center pr-2 mx-3 gap-3 tablet:flex">
-                    <div class="border rounded relative w-25">
-                        <i class="bi bi-cart fs-3 text-white"></i>
-                        <span class="badge badge-light">2</span>
+                <div class="right-0 items-center pr-2 mx-3 gap-3 tablet:flex">
+                    <div class="relative" id="nav-icon">
+                        <i class="bi bi-cart fs-3"></i>
+                        <div class="bg-red-600 absolute badge color-dark top-0 left-4" id="badgeRound">
+                            <span class="text-center" id="notification"></span>
+                        </div>
                     </div>
                     <a href="/login" class="rounded-md border-2 border-black px-4 py-2 font-bold">Login</a>
-                    <a href="/register"
-                        class="bg-black text-white px-4 py-2 rounded-md font-bold border-2 ">Register</a>
+                    <a href="/register" class="bg-black text-white px-4 py-2 rounded-md font-bold border-2 ">Register</a>
                 </div>
             </div>
         </div>

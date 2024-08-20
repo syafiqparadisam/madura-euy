@@ -68,6 +68,16 @@ const router = async () => {
 window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const $badge = $('#notification');
+
+  // Retrieve the stored value from localStorage, or use the default value
+  let storedValue = parseInt(localStorage.getItem('cartBadgeValue')) || 0;
+
+  if (storedValue > 0) {
+    $badge.text(storedValue);
+  } else {
+    $("#badgeRound").addClass("hidden")
+  }
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {
       e.preventDefault();
@@ -77,8 +87,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   toggleHamburgerMenu();
 
-  const discountBtn = document.getElementById("bigDiscountBtn")
-
   const url = window.location.pathname;
   const id = url.split("/")[2];
   if (id) {
@@ -86,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const search = parseSearchURL();
   if (search) {
-   
+
     getProductsBySearchParams(search);
   }
 
@@ -151,11 +159,18 @@ $("#ghRafi").on("click", () => {
 });
 
 $("#searchInput").on("keydown", function searchInput(e) {
-  
+
   $("#searchIcon").on("click", () => {
     window.location.href = `/product?search=${e.target.value}`;
   })
   if (e.key == "Enter") {
     window.location.href = `/product?search=${e.target.value}`;
   }
+});
+
+// Example: Increment badge value on some event (e.g., clicking the cart icon)
+$('#nav-icon').on('click', function () {
+  let currentValue = parseInt($badge.text(), 10);
+  let newValue = currentValue + 1;
+  updateBadgeValue(newValue);
 });
