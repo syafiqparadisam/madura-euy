@@ -101,16 +101,11 @@ export async function showProductCart(id) {
         discount(data.price, data.discount)
       )}</span>
         <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
-      )}</span>
-        <span id="soldTotal" class="font-light text-m">( ${
-          data.soldTotal
-        } )</span>
+      </span>
         <br />
          <span id="originalPrice" class="line-through">${toRupiah(
         data.price
       )}</span>
-           data.price
-         )}</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
