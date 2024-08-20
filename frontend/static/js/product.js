@@ -62,6 +62,7 @@ export async function showProductCart(id) {
         </div>
       </div>
 
+      
       <!-- Grid Layout for Main Content -->
       <div class="grid grid-cols-1 hp:grid-cols-2 tablet:grid-cols-3 gap-4 flex-grow">
         <!-- Left Section: Product Image, Title, and Carousel -->
@@ -96,12 +97,12 @@ export async function showProductCart(id) {
       }</h1>
       <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
         discount(data.price, data.discount)
-        )}</span>
+      )}</span>
         <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
         <br />
          <span id="originalPrice" class="line-through">${toRupiah(
-          data.price
-       )}</span>
+        data.price
+      )}</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
@@ -201,6 +202,10 @@ export async function showProductCart(id) {
     $("#increaseQtt").on("click", () => {
       increaseQuantity();
     });
+
+    $("#backButton").on("click", () => {
+      window.location.href = "/"
+    })
 
     //Update Thumbnail when picture in thumbnail container is clicked
     $("#thumbnailContainer").on("click", ".thumbnails", function () {
