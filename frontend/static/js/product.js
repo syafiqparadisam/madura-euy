@@ -20,7 +20,9 @@ export async function showProductCart(id) {
 
     let VariantsContainer = [];
     for (let i = 0; i <= data.variants.length - 1; i++) {
-      VariantsContainer.push(`<option  class="w-full p-2 bg-white rounded-md">${data.variants[i].variant}</option>`);
+      VariantsContainer.push(
+        `<option  class="w-full p-2 bg-white rounded-md">${data.variants[i].variant}</option>`
+      );
     }
 
     let imagesContainer = [];
@@ -82,7 +84,7 @@ export async function showProductCart(id) {
             />
           </div>
           <!-- Carousel Thumbnails -->
-          <div id="thumbnailContainer" class="flex hp:flex-wrap tablet:flex-nowrap justify-between p-3">
+          <div id="thumbnailContainer" class="flex flex-wrap gap-1 justify-between">
             ${imagesContainer.join("")}
           </div>
         </div>
@@ -92,22 +94,24 @@ export async function showProductCart(id) {
           <!-- Pricing and Rating Section -->
           <div class="text-black p-4 space-y-2 rounded-md">
             <p class="text-lg">
-              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${data.title
-      }</h1>
+              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
+                data.title
+              }</h1>
       <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
         discount(data.price, data.discount)
-        )}</span>
-        <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
+      )}</span>
+        <span id="soldTotal" class="font-light text-m">( ${
+          data.soldTotal
+        } )</span>
         <br />
          <span id="originalPrice" class="line-through">${toRupiah(
-          data.price
-       )}</span>
+           data.price
+         )}</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
             </div>
-            <p id="discountText" class="fw-bold">Diskon ${data.discount
-      }%</p>
+            <p id="discountText" class="fw-bold">Diskon ${data.discount}%</p>
             <p id="productLocation" class="text-lg">
             <span class="fw-bold">Lokasi:</span> 
             ${data.location}
@@ -138,23 +142,27 @@ export async function showProductCart(id) {
               ${VariantsContainer.join("")}
             </select>
           </div>
-          <div class="flex items-center space-x-2">
-            <label>Quantity:</label>
+          <div class="flex items-center my-3 flex-wrap space-x-2">
+          <label>Quantity:</label>
+          <div class="flex space-x-2 my-sm-0 my-3">
             <button class="px-3 py-2 bg-slate-700 text-white rounded" id="decreaseQtt">-</button>
             <input
-              id="quantityInput"
-              type="text"
+            id="quantityInput"
+            type="text"
               value="1"
               class="text-center w-10 bg-white border border-gray-300 rounded"
               readonly
-            />
-            <button class="px-3 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
-            <span id="stockCount" class="text-gray-500">Stok: ${data.stock
-      }</span>
-          </div>
-    
-          <!-- Pricing Section (with Dynamic Subtotal) -->
-          <div class="space-y-1">
+              />
+              <button class="px-3 py-2 bg-slate-700 text-white rounded" id="increaseQtt">+</button>
+              </div>
+              </span>
+              </div>
+              
+              <!-- Pricing Section (with Dynamic Subtotal) -->
+              <span id="stockCount" class="my-10"><span class="font-bold">Stok:</span> ${
+                data.stock
+              }
+              <div class="space-y-1">
             <p class="text-sm text-gray-500">Subtotal</p>
             <p class="text-lg font-semibold text-gray-900">
               <span id="subtotalPrice" class="text-xl">
@@ -248,7 +256,6 @@ export async function showProductCart(id) {
     const selectedVariant = $(this).val();
     const variant = product.variants.find((v) => v.variant === selectedVariant);
 
-
     let currentVariantPrice = Number(variant.price); // Update the current variant price
 
     const newDiscountedPrice = discount(currentVariantPrice, product.discount); // Use product.discount here
@@ -266,7 +273,6 @@ function discount(price, discountPercentage) {
   const discountedPrice = price - discountAmount;
   return discountedPrice;
 }
-
 
 export function updateSubtotal(price) {
   const quantity = parseInt(document.getElementById("quantityInput").value);
@@ -326,11 +332,11 @@ export function changeImage(imageSrc, imageNumber) {
   });
 }
 
-function updateBadgeValue() {
-  let storedValue = parseInt(sessionStorage.getItem('cartBadgeValue'));
-  let increment = storedValue + 1;
-  sessionStorage.setItem('cartBadgeValue', increment.toString());
-  $("badgeRound").toggleClass("hidden");
-  $("#notification").text(increment);
 
+function updateBadgeValue() {
+  let storedValue = parseInt(sessionStorage.getItem("cartBadgeValue"));
+  let increment = storedValue + 1;
+  sessionStorage.setItem("cartBadgeValue", increment.toString());
+  $("#badgeRound").removeClass("hidden");
+  $("#notification").text(increment);
 }

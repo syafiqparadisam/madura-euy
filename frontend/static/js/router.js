@@ -69,24 +69,9 @@ window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", async () => {
   const $badge = $('#notification');
-
-  // Retrieve the stored value from localStorage, or use the default value
-  let storedValue = parseInt(localStorage.getItem('cartBadgeValue')) || 0;
-
-  if (storedValue > 0) {
-    $badge.text(storedValue);
-  } else {
-    $("#badgeRound").addClass("hidden")
-  }
-  document.body.addEventListener("click", (e) => {
-    if (e.target.matches("[data-link]")) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    }
-  });
-
+  
   toggleHamburgerMenu();
-
+  
   const url = window.location.pathname;
   const id = url.split("/")[2];
   if (id) {
@@ -94,9 +79,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const search = parseSearchURL();
   if (search) {
-
+    
     getProductsBySearchParams(search);
   }
+  
+    // Retrieve the stored value from localStorage, or use the default value
+    let storedValue = parseInt(sessionStorage.getItem('cartBadgeValue'))
+    if (!storedValue) {
+      sessionStorage.setItem("cartBadgeValue", 0)
+      storedValue =  parseInt(sessionStorage.getItem('cartBadgeValue'))
+    }
+
+    if (storedValue > 0) {
+      $badge.text(storedValue);
+    } else {
+      $("#badgeRound").addClass("hidden")
+    }
+    document.body.addEventListener("click", (e) => {
+      if (e.target.matches("[data-link]")) {
+        e.preventDefault();
+        navigateTo(e.target.href);
+      }
+    });
 
   router();
   $("#promoProduct").css("width", "400px");

@@ -38,12 +38,12 @@ export default class extends AbstractView {
               </section>
             <!-- Filter -->
             <div class="flex max-w-3/5 ml-4 mt-4">
-                <div class="flex gap-3 font-bold text-sm hp:text-xl justify-center items-center">
+                <div class="flex gap-3 flex-wrap font-bold text-sm hp:text-xl justify-center items-center">
                     <i class="bi bi-search"></i>
                     <h1 id="searchResult"></h1>
                 </div>
             </div>
-                <section class="flex tablet:w-4/5 justify-around items-center flex-wrap my-10 tablet:gap-10 hp:gap-5 gap-2 mx-1 hp:mx-auto" id="searchProducts">
+                <section class="flex tablet:w-4/5 justify-content-around align-items-center flex-wrap my-10 tablet:gap-10 hp:gap-5 gap-2 mx-1 mx-md-auto" id="searchProducts">
                 </section>
             </div>
         `;

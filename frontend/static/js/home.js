@@ -118,7 +118,7 @@ export async function getProductsBySearchParams(params) {
   // if product isn't exist after search by title or description
   if (products.length == 0) {
     $("#searchProducts").html(
-      `<h1 class="tablet:text-2xl py-5 tablet:py-10 hp:text-xl text-md font-bold">Produk ${params} tidak ditemukan</h1>`
+      `<h1 class="tablet:text-2xl py-5 tablet:py-10 hp:text-xl text-center text-md font-bold">Produk ${params} tidak ditemukan</h1>`
     );
   }
   handleFilter(products, params);
