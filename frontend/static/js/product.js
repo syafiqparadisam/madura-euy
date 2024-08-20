@@ -35,7 +35,7 @@ export async function showProductCart(id) {
     $("#productCart").append(`
       <!-- Confirmation Modal -->
       <div id="confirmationModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto mx-3">
           <p class="text-lg text-black font-semibold">Apakah kamu yakin ingin membeli Produk ini?</p>
           <div class="flex justify-end mt-4">
             <button id="confirmBuy" class="px-4 py-2 bg-green-500 text-white rounded mr-2 w-auto">YA</button>
@@ -46,7 +46,7 @@ export async function showProductCart(id) {
     
       <!-- Delivery Modal -->
       <div id="deliveryModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto mx-3">
           <p class="text-lg text-black font-semibold">Di tunggu ya,barang sedang diantar &#128516;</p>
           <div class="flex justify-end">
             <button id="closeDeliveryModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4 inline-block w-auto">OK</button>
@@ -56,7 +56,7 @@ export async function showProductCart(id) {
 
       <!-- Cancel Modal -->
       <div id="cancelModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto">
+        <div class="modal-content bg-white p-4 rounded shadow-lg max-w-md h-auto mx-3">
           <p class="text-lg text-black font-semibold">Transaksi dibatalkan &#128531;</p>
           <div class="flex justify-end">
             <button id="closeCancelModal" class="px-4 py-2 bg-blue-500 text-white rounded mt-4 inline-block w-auto">OK</button>
