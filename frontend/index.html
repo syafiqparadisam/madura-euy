@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toko madura</title>
 
     <!-- CSS-->
@@ -15,7 +14,10 @@
         src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link href="css/tailwind.css" type="text/tailwindcss" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,24 +32,21 @@
         }
     </style>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                },
-                screens: {
-                    "hp": "400px",
-                    'tablet': '640px',
-                    'laptop': '1024px',
-                    'desktop': '1280px',
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {},
+          screens: {
+            hp: "400px",
+            tablet: "640px",
+            laptop: "1024px",
+            desktop: "1280px",
+          },
+        },
+      };
     </script>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- navbar-->
     <nav class="bg-gray-100 w-full shadow-lg sticky top-0 z-40">
         <div class="mx-auto w-full px-2 tablet:px-6 lg:px-8">
@@ -64,12 +63,21 @@
             
                         Menu open: "hidden", Menu closed: "block"
                       -->
-                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                        <!--
+              <svg
+                class="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <!--
                         Icon when menu is open.
             
                         Menu open: "block", Menu closed: "hidden"
@@ -113,7 +121,7 @@
                 </div>
             </div>
         </div>
-        </div>
+      </div>
 
         <div class="tablet:hidden " id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2 absolute bg-white shadow-md w-full">
@@ -133,78 +141,146 @@
 
     <!-- Carousel wrapper -->
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
-        <!-- Carousel wrapper -->
-        <div class="relative overflow-hidden rounded-lg h-24 hp:h-36 tablet:h-60 laptop:h-80">
-            <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
-                <img src="/static/assets/Banner/banner1.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
-                    alt="...">
-            </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
-                <img src="/static/assets/Banner/banner2.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
-                    alt="...">
-            </div>
-            <!-- Item 4 -->
-            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
-                <img src="/static/assets/Banner/banner3.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
-                    alt="...">
-            </div>
-            <!-- Item 5 -->
-            <div class="hidden duration-700 ease-in-out overflow-hidden" data-carousel-item>
-                <img src="/static/assets/Banner/banner4.png"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
-                    alt="...">
-            </div>
+      <!-- Carousel wrapper -->
+      <div
+        class="relative overflow-hidden rounded-lg h-24 hp:h-36 tablet:h-60 laptop:h-80"
+      >
+        <!-- Item 1 -->
+        <div
+          class="hidden duration-700 ease-in-out overflow-hidden"
+          data-carousel-item
+        >
+          <img
+            src="/static/assets/Banner/banner1.png"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+            alt="..."
+          />
         </div>
-        <!-- Slider indicators -->
-        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                data-carousel-slide-to="4"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-                data-carousel-slide-to="5"></button>
+        <!-- Item 2 -->
+        <div
+          class="hidden duration-700 ease-in-out overflow-hidden"
+          data-carousel-item
+        >
+          <img
+            src="/static/assets/Banner/banner2.png"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+            alt="..."
+          />
         </div>
-        <!-- Slider controls -->
-        <button type="button"
-            class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-prev>
-            <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 1 1 5l4 4" />
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button"
-            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-next>
-            <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 9 4-4-4-4" />
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
+        <!-- Item 4 -->
+        <div
+          class="hidden duration-700 ease-in-out overflow-hidden"
+          data-carousel-item
+        >
+          <img
+            src="/static/assets/Banner/banner3.png"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+            alt="..."
+          />
+        </div>
+        <!-- Item 5 -->
+        <div
+          class="hidden duration-700 ease-in-out overflow-hidden"
+          data-carousel-item
+        >
+          <img
+            src="/static/assets/Banner/banner4.png"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full object-cover object-center"
+            alt="..."
+          />
+        </div>
+      </div>
+      <!-- Slider indicators -->
+      <div
+        class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
+      >
+        <button
+          type="button"
+          class="w-3 h-3 rounded-full"
+          aria-current="true"
+          aria-label="Slide 1"
+          data-carousel-slide-to="0"
+        ></button>
+        <button
+          type="button"
+          class="w-3 h-3 rounded-full"
+          aria-current="false"
+          aria-label="Slide 2"
+          data-carousel-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          class="w-3 h-3 rounded-full"
+          aria-current="false"
+          aria-label="Slide 4"
+          data-carousel-slide-to="4"
+        ></button>
+        <button
+          type="button"
+          class="w-3 h-3 rounded-full"
+          aria-current="false"
+          aria-label="Slide 5"
+          data-carousel-slide-to="5"
+        ></button>
+      </div>
+      <!-- Slider controls -->
+      <button
+        type="button"
+        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-prev
+      >
+        <span
+          class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 1 1 5l4 4"
+            />
+          </svg>
+          <span class="sr-only">Previous</span>
+        </span>
+      </button>
+      <button
+        type="button"
+        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-next
+      >
+        <span
+          class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 9 4-4-4-4"
+            />
+          </svg>
+          <span class="sr-only">Next</span>
+        </span>
+      </button>
     </div>
-
 
     <!-- Carousel wrapper end -->
 
-
-    <div id="app"></div>
+    <div id="app" class="relative relative"></div>
 
     <!--Footer-->
     <footer class="bg-gray-800 text-white pt-4 w-full">
@@ -231,13 +307,17 @@
     </footer>
     <!--Footer end-->
 
+    <script src="/static/utils/particlejs/particles.js"></script>
+    <script src="/static/utils/particlejs/demo/js/app.js"></script>
 
     <script type="module" src="/static/js/router.js"></script>
     <script type="module" src="/static/js/home.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-</body>
-
+  </body>
 </html>

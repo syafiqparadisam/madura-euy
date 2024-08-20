@@ -100,11 +100,15 @@ export async function showProductCart(id) {
       <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
         discount(data.price, data.discount)
       )}</span>
+        <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
+      )}</span>
         <span id="soldTotal" class="font-light text-m">( ${
           data.soldTotal
         } )</span>
         <br />
          <span id="originalPrice" class="line-through">${toRupiah(
+        data.price
+      )}</span>
            data.price
          )}</span>
             </p>
@@ -209,6 +213,10 @@ export async function showProductCart(id) {
     $("#increaseQtt").on("click", () => {
       increaseQuantity();
     });
+
+    $("#backButton").on("click", () => {
+      window.location.href = "/"
+    })
 
     //Update Thumbnail when picture in thumbnail container is clicked
     $("#thumbnailContainer").on("click", ".thumbnails", function () {
