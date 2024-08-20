@@ -280,11 +280,15 @@
 
     <!-- Carousel wrapper end -->
 
-    <div id="app" class="relative relative"></div>
+    <div id="app" class="relative"></div>
 
     <!--Footer-->
-    <footer class="bg-gray-800 text-white pt-4 w-full">
+    <footer class="bg-gray-800 text-white pt-4 w-full relative">
+        <div class="absolute w-full h-full top-0 left-0 z-0" id="particles-container">
+            <div id="particles-js" class="w-full h-full"></div>
+        </div>
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            
             <!-- Left section -->
             <div class="flex space-x-8 md:mb-0">
                 <a href="/home" class="hover:text-gray-400 fs-sm-4 fs-6">Home</a>
