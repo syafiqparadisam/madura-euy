@@ -2,9 +2,8 @@ import { toRupiah } from "./utils.js";
 
 export async function showProductCart(id) {
   try {
-    const data = await fetch("../../../data.json");
+    const data = await fetch("/data.json");
     const products = await data.json();
-    console.log(typeof id);
 
     const product = products.find((product) => product.id == parseInt(id));
 
