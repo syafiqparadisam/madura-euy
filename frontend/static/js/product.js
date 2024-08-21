@@ -18,6 +18,7 @@ export async function showProductCart(id) {
       starsHtml += `<i class="bi bi-star"></i>`;
     }
 
+    //product variants display
     let VariantsContainer = [];
     for (let i = 0; i <= product.variants.length - 1; i++) {
       VariantsContainer.push(
@@ -25,6 +26,7 @@ export async function showProductCart(id) {
       );
     }
 
+    //small thumbnails display
     let imagesContainer = [];
     for (let i = 0; i <= product.image.length - 1; i++) {
       imagesContainer.push(
@@ -80,10 +82,10 @@ export async function showProductCart(id) {
             id="currentImage"
               src="${product.image[0]}"
               alt="Product Image"
-              class="object-cover h-full w-full"
+              class="zoomable-image object-cover h-full w-full transition-transform duration-300 ease-out bg-repeat bg-contain"
             />
           </div>
-          <!-- Carousel Thumbnails -->
+          <!-- small Thumbnails-->
           <div id="thumbnailContainer" class="flex flex-wrap gap-1 justify-between">
             ${imagesContainer.join("")}
           </div>
@@ -91,7 +93,7 @@ export async function showProductCart(id) {
     
         <!-- Middle Section: Product Details -->
         <div class="space-y-4">
-          <!-- Pricing and Rating Section -->
+              <!-- Pricing and Rating Section -->
           <div class="text-black p-4 space-y-2 rounded-md">
             <p class="text-lg">
               <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
@@ -201,6 +203,25 @@ export async function showProductCart(id) {
         </div>
       </div>
     `);
+
+    //zoomable main image
+    $("#currentImage").on("mousemove", function (e) {
+      const offset = $(this).offset();
+      const x = ((e.pageX - offset.left) / $(this).width()) * 100;
+      const y = ((e.pageY - offset.top) / $(this).height()) * 100;
+
+      $(this).css({
+        'transform-origin': `${x}% ${y}%`,
+        'transform': 'scale(1.5)'
+      });
+    });
+
+    $("#currentImage").on("mouseleave", function () {
+      $(this).css({
+        'transform-origin': 'center',
+        'transform': 'scale(1)' // Reset the zoom when the mouse leaves
+      });
+    });
 
     // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
@@ -339,7 +360,7 @@ export function changeImage(imageSrc, imageNumber) {
 
   thumbnails.forEach((thumbnail, index) => {
     // Apply a red border around the entire thumbnail if selected
-    thumbnail.style.borderBotom =
+    thumbnail.style.borderBottom =
       index === imageNumber ? "3px solid red" : "none";
   });
 }
