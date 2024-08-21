@@ -1,34 +1,34 @@
-import { toRupiah } from "./home.js";
+import { toRupiah } from "./utils.js";
 
 export async function showProductCart(id) {
-  const data = await fetch("../../../data.json");
-  const products = await data.json();
+  try {
+    const data = await fetch("../../../data.json");
+    const products = await data.json();
+    console.log(typeof id);
 
-  const product = products.find((product) => product.id == id);
-  const productArr = [product];
+    const product = products.find((product) => product.id == parseInt(id));
 
-  productArr.map((data) => {
     //rating
     let starsHtml = "";
-    for (let i = 1; i <= data.rating; i++) {
+    for (let i = 1; i <= product.rating; i++) {
       starsHtml += `<i class="bi bi-star-fill text-yellow-400"></i>`;
     }
-    let totalStarsWithoutFill = 5 - data.rating;
+    let totalStarsWithoutFill = 5 - product.rating;
     for (let i = 1; i <= totalStarsWithoutFill; i++) {
       starsHtml += `<i class="bi bi-star"></i>`;
     }
 
     let VariantsContainer = [];
-    for (let i = 0; i <= data.variants.length - 1; i++) {
+    for (let i = 0; i <= product.variants.length - 1; i++) {
       VariantsContainer.push(
-        `<option  class="w-full p-2 bg-white rounded-md">${data.variants[i].variant}</option>`
+        `<option  class="w-full p-2 bg-white rounded-md">${product.variants[i].variant}</option>`
       );
     }
 
     let imagesContainer = [];
-    for (let i = 0; i <= data.image.length - 1; i++) {
+    for (let i = 0; i <= product.image.length - 1; i++) {
       imagesContainer.push(
-        `<img src="${data.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer rounded-md shadow-md" data-index="${i}">`
+        `<img src="${product.image[i]}" alt="Thumbnail ${i}" class="thumbnails w-20 h-20 cursor-pointer rounded-md shadow-md" data-index="${i}">`
       );
     }
 
@@ -71,14 +71,14 @@ export async function showProductCart(id) {
           <!-- Product Title Container -->
           <div class=" rounded-md hp:block hidden" id="mainTitle">
             <h1 id="productTitle" class="text-3xl font-bold text-black text-center  border-black">
-            ${data.title}
+            ${product.title}
             </h1>
             </div>
             <!-- Main Product Image -->
             <div id="mainImage" class="w-full h-80 flex justify-center items-center rounded-md overflow-hidden">
             <img
             id="currentImage"
-              src="${data.image[0]}"
+              src="${product.image[0]}"
               alt="Product Image"
               class="object-cover h-full w-full"
             />
@@ -95,25 +95,27 @@ export async function showProductCart(id) {
           <div class="text-black p-4 space-y-2 rounded-md">
             <p class="text-lg">
               <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
-                data.title
+                product.title
               }</h1>
       <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
-        discount(data.price, data.discount)
+        discount(product.price, product.discount)
       )}</span>
-        <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
+        <span id="soldTotal" class="font-light text-m">( ${
+          product.soldTotal
+        } )</span>
       </span>
         <br />
          <span id="originalPrice" class="line-through">${toRupiah(
-        data.price
-      )}</span>
+           product.price
+         )}</span>
             </p>
             <div id="productRating" class="flex items-center space-x-2">
               ${starsHtml}
             </div>
-            <p id="discountText" class="fw-bold">Diskon ${data.discount}%</p>
+            <p id="discountText" class="fw-bold">Diskon ${product.discount}%</p>
             <p id="productLocation" class="text-lg">
             <span class="fw-bold">Lokasi:</span> 
-            ${data.location}
+            ${product.location}
             </p>
           </div>
     
@@ -122,7 +124,7 @@ export async function showProductCart(id) {
             <p id="productDescription">
               <span class="fw-bold  ">Deskripsi Produk:</span>
               <br />
-              ${data.description}
+              ${product.description}
 
             </p>
             
@@ -159,13 +161,13 @@ export async function showProductCart(id) {
               
               <!-- Pricing Section (with Dynamic Subtotal) -->
               <span id="stockCount" class="my-10"><span class="font-bold">Stok:</span> ${
-                data.stock
+                product.stock
               }
               <div class="space-y-1">
             <p class="text-sm text-gray-500">Subtotal</p>
             <p class="text-lg font-semibold text-gray-900">
               <span id="subtotalPrice" class="text-xl">
-                ${toRupiah(discount(data.price, data.discount))}
+                ${toRupiah(discount(product.price, product.discount))}
               </span>
             </p>
           </div>
@@ -210,15 +212,15 @@ export async function showProductCart(id) {
     });
 
     $("#backButton").on("click", () => {
-      window.location.href = "/"
-    })
+      window.location.href = "/";
+    });
 
     //Update Thumbnail when picture in thumbnail container is clicked
     $("#thumbnailContainer").on("click", ".thumbnails", function () {
       // Get the index from the clicked thumbnail
       const index = $(this).data("index");
       // Get the image source from the `data.image` array based on the index
-      const newImageSrc = data.image[index];
+      const newImageSrc = product.image[index];
 
       // Change the main image source
       $("#currentImage").attr("src", newImageSrc);
@@ -227,48 +229,55 @@ export async function showProductCart(id) {
       $(".thumbnails").css("border-bottom", "none");
       $(this).css("border-bottom", "3px solid red");
     });
-  });
 
-  // Modal Box Functionality
-  $("#BuyButton").on("click", function () {
-    $("#confirmationModal").removeClass("hidden");
-  });
+    // Modal Box Functionality
+    $("#BuyButton").on("click", function () {
+      $("#confirmationModal").removeClass("hidden");
+    });
 
-  $("#confirmBuy").on("click", function () {
-    updateBadgeValue();
-    $("#confirmationModal").addClass("hidden");
-    $("#deliveryModal").removeClass("hidden");
-  });
+    $("#confirmBuy").on("click", function () {
+      updateBadgeValue();
+      $("#confirmationModal").addClass("hidden");
+      $("#deliveryModal").removeClass("hidden");
+    });
 
-  $("#cancelBuy").on("click", function () {
-    $("#confirmationModal").addClass("hidden");
-    $("#cancelModal").removeClass("hidden");
-  });
+    $("#cancelBuy").on("click", function () {
+      $("#confirmationModal").addClass("hidden");
+      $("#cancelModal").removeClass("hidden");
+    });
 
-  $("#closeDeliveryModal").on("click", function () {
-    $("#deliveryModal").addClass("hidden");
-  });
+    $("#closeDeliveryModal").on("click", function () {
+      $("#deliveryModal").addClass("hidden");
+    });
 
-  $("#closeCancelModal").on("click", function () {
-    $("#cancelModal").addClass("hidden");
-  });
+    $("#closeCancelModal").on("click", function () {
+      $("#cancelModal").addClass("hidden");
+    });
 
-  //dynamic pricing based on Variants
-  // Check if the selected variant exists in the product
-  $("#variantSelect").on("change", function () {
-    const selectedVariant = $(this).val();
-    const variant = product.variants.find((v) => v.variant === selectedVariant);
+    //dynamic pricing based on Variants
+    // Check if the selected variant exists in the product
+    $("#variantSelect").on("change", function () {
+      const selectedVariant = $(this).val();
+      const variant = product.variants.find(
+        (v) => v.variant === selectedVariant
+      );
 
-    let currentVariantPrice = Number(variant.price); // Update the current variant price
+      let currentVariantPrice = Number(variant.price); // Update the current variant price
 
-    const newDiscountedPrice = discount(currentVariantPrice, product.discount); // Use product.discount here
+      const newDiscountedPrice = discount(
+        currentVariantPrice,
+        product.discount
+      ); // Use product.discount here
 
-    $("#discountedPrice").text(toRupiah(newDiscountedPrice));
-    $("#originalPrice").text(toRupiah(currentVariantPrice));
+      $("#discountedPrice").text(toRupiah(newDiscountedPrice));
+      $("#originalPrice").text(toRupiah(currentVariantPrice));
 
-    let price = parseRupiahToInteger();
-    updateSubtotal(price);
-  });
+      let price = parseRupiahToInteger();
+      updateSubtotal(price);
+    });
+  } catch (err) {
+   
+  }
 }
 
 function discount(price, discountPercentage) {
@@ -334,7 +343,6 @@ export function changeImage(imageSrc, imageNumber) {
       index === imageNumber ? "3px solid red" : "none";
   });
 }
-
 
 function updateBadgeValue() {
   let storedValue = parseInt(sessionStorage.getItem("cartBadgeValue"));

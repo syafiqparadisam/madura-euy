@@ -4,6 +4,8 @@
 
 Ikuti langkah-langkah berikut untuk mengatur dan menjalankan proyek ini di lingkungan Windows:
 
+## Menjalankan proyek menggunakan Nodejs
+
 1. **Unduh dan Instal Node.js**
    - Kunjungi situs resmi [Node.js](https://nodejs.org/).
    - Pilih versi LTS atau Current yang sesuai dengan sistem Anda:
@@ -37,8 +39,8 @@ Ikuti langkah-langkah berikut untuk mengatur dan menjalankan proyek ini di lingk
     npm install
     ```
 
-6. **Running server**
-   ```
+6.  **Running server**
+   ```sh
    node server.js
    ```
    Atau

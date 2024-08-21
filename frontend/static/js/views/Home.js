@@ -10,7 +10,7 @@ export default class extends AbstractView {
     return `
    
             <!-- Popular Products -->
-            <section class="flex w-full py-1 hp:py-4 tablet:py-7 justify-center items-center flex-wrap my-10 tablet:gap-10 gap-10 text-center hp:gap-3 mx-auto" id="smallProduct">
+            <section class="flex w-full py-1 hp:py-4 tablet:py-7 justify-center items-center flex-wrap my-10 tablet:gap-10 gap-10 text-center hp:gap-3 mx-auto" id="popularProduct">
                 
             </section>
             <!-- popular Products end -->

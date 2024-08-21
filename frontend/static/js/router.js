@@ -2,7 +2,7 @@ import {
   getProductsBySearchParams,
   showBigProduct,
   showPromoProduct,
-  showSmallProduct,
+  showPopularProduct,
 } from "./home.js";
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
@@ -67,46 +67,46 @@ const router = async () => {
 
 window.addEventListener("popstate", router);
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const $badge = $('#notification');
-  
+document.addEventListener("DOMContentLoaded",async () => {
+  const $badge = $("#notification");
+
   toggleHamburgerMenu();
-  
+
   const url = window.location.pathname;
   const id = url.split("/")[2];
   if (id) {
-    showProductCart(id);
+     showProductCart(id);
   }
   const search = parseSearchURL();
   if (search) {
-    
     getProductsBySearchParams(search);
   }
-  
-    // Retrieve the stored value from localStorage, or use the default value
-    let storedValue = parseInt(sessionStorage.getItem('cartBadgeValue'))
-    if (!storedValue) {
-      sessionStorage.setItem("cartBadgeValue", 0)
-      storedValue =  parseInt(sessionStorage.getItem('cartBadgeValue'))
-    }
 
-    if (storedValue > 0) {
-      $badge.text(storedValue);
-    } else {
-      $("#badgeRound").addClass("hidden")
+  // Retrieve the stored value from localStorage, or use the default value
+  let storedValue = parseInt(sessionStorage.getItem("cartBadgeValue"));
+  if (!storedValue) {
+    sessionStorage.setItem("cartBadgeValue", 0);
+    storedValue = parseInt(sessionStorage.getItem("cartBadgeValue"));
+  }
+
+  if (storedValue > 0) {
+    $badge.text(storedValue);
+  } else {
+    $("#badgeRound").addClass("hidden");
+  }
+
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
     }
-    document.body.addEventListener("click", (e) => {
-      if (e.target.matches("[data-link]")) {
-        e.preventDefault();
-        navigateTo(e.target.href);
-      }
-    });
+  });
 
   router();
   $("#promoProduct").css("width", "400px");
-  await showBigProduct();
-  await showPromoProduct();
-  await showSmallProduct();
+   await showBigProduct();
+   await showPromoProduct();
+   await showPopularProduct();
 });
 
 function parseSearchURL() {
@@ -145,15 +145,6 @@ $("#goHome").on("click", () => {
   window.location.href = "/";
 });
 
-//product button functionality
-$("#decreaseQtt").on("click", () => {
-  decreaseQuantity();
-});
-
-$("#increaseQtt").on("click", () => {
-  increaseQuantity();
-});
-
 $("#ghSyafiq").on("click", () => {
   window.open("https://github.com/syafiqparadisam");
 });
@@ -163,17 +154,16 @@ $("#ghRafi").on("click", () => {
 });
 
 $("#searchInput").on("keydown", function searchInput(e) {
-
   $("#searchIcon").on("click", () => {
     window.location.href = `/product?search=${e.target.value}`;
-  })
+  });
   if (e.key == "Enter") {
     window.location.href = `/product?search=${e.target.value}`;
   }
 });
 
 // Example: Increment badge value on some event (e.g., clicking the cart icon)
-$('#nav-icon').on('click', function () {
+$("#nav-icon").on("click", function () {
   let currentValue = parseInt($badge.text(), 10);
   let newValue = currentValue + 1;
   updateBadgeValue(newValue);
