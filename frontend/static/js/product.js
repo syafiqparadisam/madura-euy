@@ -1,9 +1,11 @@
 import { toRupiah } from "./home.js";
 
 export async function showProductCart(id) {
+  //fetching data
   const data = await fetch("../../../data.json");
   const products = await data.json();
 
+  //display product based on id
   const product = products.find((product) => product.id == id);
   const productArr = [product];
 
@@ -18,6 +20,7 @@ export async function showProductCart(id) {
       starsHtml += `<i class="bi bi-star"></i>`;
     }
 
+    //product variants display
     let VariantsContainer = [];
     for (let i = 0; i <= data.variants.length - 1; i++) {
       VariantsContainer.push(
@@ -25,6 +28,7 @@ export async function showProductCart(id) {
       );
     }
 
+    //small thumbnails display
     let imagesContainer = [];
     for (let i = 0; i <= data.image.length - 1; i++) {
       imagesContainer.push(
@@ -80,10 +84,10 @@ export async function showProductCart(id) {
             id="currentImage"
               src="${data.image[0]}"
               alt="Product Image"
-              class="object-cover h-full w-full"
+              class="zoomable-image object-cover h-full w-full transition-transform duration-300 ease-out bg-repeat bg-contain"
             />
           </div>
-          <!-- Carousel Thumbnails -->
+          <!-- small Thumbnails-->
           <div id="thumbnailContainer" class="flex flex-wrap gap-1 justify-between">
             ${imagesContainer.join("")}
           </div>
@@ -91,30 +95,27 @@ export async function showProductCart(id) {
     
         <!-- Middle Section: Product Details -->
         <div class="space-y-4">
-          <!-- Pricing and Rating Section -->
+              <!-- Pricing and Rating Section -->
           <div class="text-black p-4 space-y-2 rounded-md">
-            <p class="text-lg">
-              <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${
-                data.title
-              }</h1>
-      <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
-        discount(data.price, data.discount)
-      )}</span>
-        <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
-      </span>
-        <br />
-         <span id="originalPrice" class="line-through">${toRupiah(
-        data.price
-      )}</span>
-            </p>
-            <div id="productRating" class="flex items-center space-x-2">
-              ${starsHtml}
-            </div>
-            <p id="discountText" class="fw-bold">Diskon ${data.discount}%</p>
-            <p id="productLocation" class="text-lg">
-            <span class="fw-bold">Lokasi:</span> 
-            ${data.location}
-            </p>
+             <p class="text-lg">
+             <h1 id="productTitleInPricing" class="text-2xl font-bold text-black hp:hidden block ">${data.title}</h1>
+            <!--display original price,discounted price,and sold total--> 
+            <span id="discountedPrice" class="font-bold text-2xl">${toRupiah(
+      discount(data.price, data.discount)
+    )}</span>
+              <span id="soldTotal" class="font-light text-m">( ${data.soldTotal} )</span>
+            </span>
+              <br />
+              <span id="originalPrice" class="line-through">${toRupiah(
+      data.price
+    )}</span>
+                  <div id="productRating" class="flex items-center space-x-2">
+                    ${starsHtml}
+                  </div>
+                  <p id="discountText" class="fw-bold">Diskon ${data.discount}%</p>
+                  <p id="productLocation" class="text-lg">
+                  <span class="fw-bold">Lokasi:</span> 
+                  ${data.location}
           </div>
     
           <!-- Product Description -->
@@ -157,10 +158,9 @@ export async function showProductCart(id) {
               </span>
               </div>
               
-              <!-- Pricing Section (with Dynamic Subtotal) -->
-              <span id="stockCount" class="my-10"><span class="font-bold">Stok:</span> ${
-                data.stock
-              }
+              <!-- Pricing Section -->
+              <span id="stockCount" class="my-10"><span class="font-bold">Stok:</span> ${data.stock
+      }
               <div class="space-y-1">
             <p class="text-sm text-gray-500">Subtotal</p>
             <p class="text-lg font-semibold text-gray-900">
@@ -199,6 +199,25 @@ export async function showProductCart(id) {
         </div>
       </div>
     `);
+
+    //zoomable main image
+    $("#currentImage").on("mousemove", function (e) {
+      const offset = $(this).offset();
+      const x = ((e.pageX - offset.left) / $(this).width()) * 100;
+      const y = ((e.pageY - offset.top) / $(this).height()) * 100;
+
+      $(this).css({
+        'transform-origin': `${x}% ${y}%`,
+        'transform': 'scale(1.5)'
+      });
+    });
+
+    $("#currentImage").on("mouseleave", function () {
+      $(this).css({
+        'transform-origin': 'center',
+        'transform': 'scale(1)' // Reset the zoom when the mouse leaves
+      });
+    });
 
     // Attach events to quantity buttons
     $("#decreaseQtt").on("click", () => {
@@ -330,7 +349,7 @@ export function changeImage(imageSrc, imageNumber) {
 
   thumbnails.forEach((thumbnail, index) => {
     // Apply a red border around the entire thumbnail if selected
-    thumbnail.style.borderBotom =
+    thumbnail.style.borderBottom =
       index === imageNumber ? "3px solid red" : "none";
   });
 }
