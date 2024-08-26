@@ -1,0 +1,15 @@
+{
+  "name": "rafi/backend",
+  "autoload": {
+    "psr-4": {
+      "rafi\\backend\\": "app/"
+    }
+  },
+  "authors": [
+    {
+      "name": "africanCLAM",
+      "email": "rafir0532@gmail.com"
+    }
+  ],
+  "require": {}
+}
