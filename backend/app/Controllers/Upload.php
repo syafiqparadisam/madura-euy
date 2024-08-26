@@ -12,6 +12,14 @@ class Upload extends Controller {
 		
 	}
 
+    public function showAllProducts()
+    {
+        $result = ['message'=>'all product showed'];
+        // $result = $this->model("UploadModel")->upload();
+		// header("Content-type: Application/json");
+		echo json_encode($result);
+    }
+
     public function showPromo()
     {
         $result = ['message'=>'promo showed'];

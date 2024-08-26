@@ -1,5 +1,7 @@
 <?php
+
 namespace rafi\backend\Controllers;
+
 use rafi\backend\Core\Controller;
 
 class Product extends Controller
@@ -36,7 +38,8 @@ class Product extends Controller
         }
     }
 
-    public function popular() {
+    public function popular()
+    {
         $popularProducts = [
             [
                 'id' => 1,
@@ -65,15 +68,48 @@ class Product extends Controller
         }
     }
 
-    // public function index()
-    // {
-    // 	$result = $this->model("UploadModel")->upload();
-    // 	header("Content-type: Application/json");
-    // 	echo json_encode($result);
+    public function index()
+    {
+        $result = $this->model("UploadModel")->upload();
+        header("Content-type: Application/json");
+        echo json_encode($result);
+    }
 
-    // }
+    public function allProduct()
+    {
+        $allProducts =  [
+            [
+                "id" => 1,
+                "title" => "Product Title",
+                "image" => [
+                    "https://cloudinary.com/images/1",
+                    "https://cloudinary.com/images/2",
+                    "https://cloudinary.com/images/3",
+                    "https://cloudinary.com/images/4"
+                ],
+                "rating" => 5,
+                "stock" => 999,
+                "price" => 10000
+            ],
+        ];
 
-    public function details($id) {
+        if (!empty($allProducts)) {
+            return json_encode([
+                'statusCode' => 200,
+                'data' => $allProducts,
+                'message' => 'Success Get All Product'
+            ]);
+        } else {
+            return json_encode([
+                'statusCode' => 404,
+                'data' => null,
+                'message' => 'Product is empty'
+            ]);
+        }
+    }
+
+    public function details($id)
+    {
         $products = [
             1 => [
                 'id' => 1,
@@ -132,5 +168,5 @@ class Product extends Controller
 
     // 	$publicUrl = $response["secure_url"];
     // 	echo $publicUrl;
-    // 
+    // }
 }
