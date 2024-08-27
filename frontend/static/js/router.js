@@ -12,6 +12,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "./product.js";
+import Login from "./views/login.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -37,6 +38,7 @@ const navigateTo = (url) => {
 const router = async () => {
   const routes = [
     { path: "/", view: Home },
+    { path: "/login", view: Login },
     { path: "/product", view: Products },
     { path: "/product/:id", view: ProductId },
   ];
