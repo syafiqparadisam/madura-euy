@@ -7,12 +7,15 @@ import {
 import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
+import Dashboard from "./views/Dashboard.js";
+import Login from "./views/login.js";
+import CreateItem from "./views/CreateItem.js";
 import {
   showProductCart,
   increaseQuantity,
   decreaseQuantity,
 } from "./product.js";
-import Login from "./views/login.js";
+import SubmitItem from "./views/SubmitItem.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -39,6 +42,9 @@ const router = async () => {
   const routes = [
     { path: "/", view: Home },
     { path: "/login", view: Login },
+    { path: "/createItem", view: CreateItem },
+    { path: "/submitItem", view: SubmitItem },
+    { path: "/dashboard", view: Dashboard },
     { path: "/product", view: Products },
     { path: "/product/:id", view: ProductId },
   ];
@@ -162,6 +168,10 @@ $("#searchInput").on("keydown", function searchInput(e) {
   if (e.key == "Enter") {
     window.location.href = `/product?search=${e.target.value}`;
   }
+});
+
+$("#createItemButton").on("click", () => {
+  window.location.href = "/create";
 });
 
 // Example: Increment badge value on some event (e.g., clicking the cart icon)

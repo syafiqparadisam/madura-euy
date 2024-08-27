@@ -21,6 +21,18 @@ app.get("/login", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 
+app.get("/dashboard", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
+});
+
+app.get("/createItem", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
+});
+
+app.get("/submitItem", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
+});
+
 // Route for product pages with dynamic id
 app.get("/product/:id", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
