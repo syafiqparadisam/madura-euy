@@ -1,7 +1,7 @@
 import { toRupiah } from "./utils.js";
 
 export async function showProductCart(id) {
-  try {
+  try { 
     const data = await fetch("/data.json");
     const products = await data.json();
 
