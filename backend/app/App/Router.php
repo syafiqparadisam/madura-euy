@@ -18,6 +18,7 @@ class Router
 
 	public static function run()
 	{
+		header('Access-Control-Allow-Origin: http://localhost:3000');
 		$path = "/";
 		$method = $_SERVER["REQUEST_METHOD"];
 		if (isset($_SERVER["PATH_INFO"])) {

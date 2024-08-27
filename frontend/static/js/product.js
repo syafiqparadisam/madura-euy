@@ -3,9 +3,13 @@ import { toRupiah } from "./utils.js";
 export async function showProductCart(id) {
   try { 
     const data = await fetch(`http://localhost:8080/product/${id}`);
-    const products = await data.json();
+    const {data:product, statusCode, message} = await data.json();
+    // const product = products.find((product) => product.id == parseInt(id));
 
-    const product = products.find((product) => product.id == parseInt(id));
+    if(statusCode !== 200) {
+      console.error(message)
+      return;
+    }
 
     //rating
     let starsHtml = "";
