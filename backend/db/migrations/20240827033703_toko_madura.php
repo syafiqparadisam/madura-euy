@@ -30,16 +30,18 @@ final class TokoMadura extends AbstractMigration
         $this->table("master_kategori", ["id" => false, "primary_key" => ["kode_kategori"]])
             ->addColumn("kode_kategori", "integer")
             ->addColumn("nama_kategori", "string")
-            ->addColumn("url_gambar", "string")->create();
+            ->addColumn("url_gambar", "string")
+            ->create();
 
 
         $this->table("master_barang", ["id" => false, "primary_key" => ["kode_barang"]])
             ->addColumn("kode_barang", "integer")
-            ->addColumn("kode_kategori")
-            ->addColumn("nama_barang")
+            ->addColumn("kode_kategori", "integer")
+            ->addColumn("nama_barang", "string")
             ->addColumn("keterangan_detail")
             ->addColumn("Satuan", "integer")
             ->addColumn("Diskon", "integer")
+            ->addForeignKey("kode_kategori", "master_kategori", "kode_kategori")
             ->create();
 
         $this->table("master_gambar", ["id" => false, "primary_key" => ["kode_gambar"]])
