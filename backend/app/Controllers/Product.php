@@ -1,7 +1,7 @@
 <?php
 
 namespace rafi\backend\Controllers;
-
+use rafi\backend\Utils\Response;
 use rafi\backend\Core\Controller;
 
 class Product extends Controller
@@ -77,7 +77,7 @@ class Product extends Controller
 
     public function allProduct()
     {
-        $allProducts =  [
+        $allProducts = [
             [
                 "id" => 1,
                 "title" => "Product Title",
@@ -151,22 +151,26 @@ class Product extends Controller
         echo $params["search"];
     }
 
-    public function largeDiscount() {}
+    public function largeDiscount()
+    {
+    }
 
 
-    // public function upload(string $file)
-    // {
 
-    // 	$publicid = Uuid::uuid4()->toString();
+    public function getProductByUser()
+    {
+        $headers = getallheaders();
 
-    // 	$upload = new UploadApi();
-    // 	$response = $upload->upload($file, [
-    // 		"public_id" => $publicid,
-    // 		'use_filename' => true,
-    // 		'overwrite' => true,
-    // 	]);
+        if (!isset($headers["user"])) {
+            $response = new Response(400, "Unknown user");
+            echo $response->create();
+            return;
+        }
 
-    // 	$publicUrl = $response["secure_url"];
-    // 	echo $publicUrl;
-    // }
+        $user = $headers["user"];
+        $result = $this->model("ProductModel")->getProductByUser($user);
+        
+        $response = new Response(200, "Successfully get product by category", $result);
+        echo $response->create();
+    }
 }

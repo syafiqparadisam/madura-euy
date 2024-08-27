@@ -3,7 +3,7 @@ namespace rafi\backend\Models;
 use rafi\backend\Core\DB;
 // use PDO;
 
-class productModel extends DB {
+class ProductModel extends DB {
     // public function __construct() {
 	// 	// parent::__construct();
 	// }

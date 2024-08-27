@@ -5,7 +5,10 @@ use PDO;
 class DB {
 	public $db;
 	public function __construct() {
-		// $this->db = new PDO("mysql:host=localhost;dbname=madura", "root");
+		$this->db = new PDO("mysql:host=localhost;dbname=madura", "root");
+	}
 
+	public function getConn() {
+		return $this->db;
 	}
 }

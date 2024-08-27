@@ -21,7 +21,7 @@ return
         'development' => [
             'adapter' => 'mysql',
             'host' => 'localhost',
-            'name' => 'dbTokoMadura',
+            'name' => 'dbtokomadura',
             'user' => 'root',
             'pass' => '',
             'port' => '3306',

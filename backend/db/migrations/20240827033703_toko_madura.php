@@ -6,67 +6,57 @@ use Phinx\Migration\AbstractMigration;
 
 final class TokoMadura extends AbstractMigration
 {
-    /**
-     * Change Method.
-     *
-     * Write your reversible migrations using this method.
-     *
-     * More information on writing migrations is available here:
-     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
-     *
-     * Remember to call "create()" or "update()" and NOT "save()" when working
-     * with the Table class.
-     */
     public function up(): void
     {
         $this->table("master_user", ["id" => false, "primary_key" => ["kode_user"]])
-            ->addColumn("kode_user", "integer")
+            ->addColumn("kode_user", "integer", ["identity" => true])  // Auto-increment if needed
             ->addColumn("Username", "string")
             ->addColumn("Email", "string")
             ->addColumn("password", "string")
+            ->addColumn("created_at", "timestamp", ["default" => "CURRENT_TIMESTAMP"])
             ->addIndex(["Email", "Username"], ["unique" => true])
-            ->addColumn("created_at", "timestamp")->create();
+            ->create();
 
         $this->table("master_kategori", ["id" => false, "primary_key" => ["kode_kategori"]])
-            ->addColumn("kode_kategori", "integer")
+            ->addColumn("kode_kategori", "integer", ["identity" => true])  // Auto-increment if needed
             ->addColumn("nama_kategori", "string")
             ->addColumn("url_gambar", "string")
             ->create();
 
-
         $this->table("master_barang", ["id" => false, "primary_key" => ["kode_barang"]])
-            ->addColumn("kode_barang", "integer")
-            ->addColumn("kode_kategori", "integer")
+            ->addColumn("kode_barang", "integer", ["identity" => true])  // Auto-increment if needed
+            ->addColumn("kode_kategori_id", "integer")
             ->addColumn("nama_barang", "string")
-            ->addColumn("keterangan_detail")
+            ->addColumn("keterangan_detail", "text")  // Added type
             ->addColumn("Satuan", "integer")
             ->addColumn("Diskon", "integer")
-            ->addForeignKey("kode_kategori", "master_kategori", "kode_kategori")
+            ->addForeignKey("kode_kategori_id", "master_kategori", "kode_kategori")
             ->create();
 
         $this->table("master_gambar", ["id" => false, "primary_key" => ["kode_gambar"]])
-            ->addColumn("kode_gambar", "integer")
-            ->addColumn("kode_barang", "integer")
+            ->addColumn("kode_gambar", "integer", ["identity" => true])  // Auto-increment if needed
+            ->addColumn("kode_barang_id", "integer")
             ->addColumn("varian", "string")
             ->addColumn("url_gambar", "string")
             ->addColumn("harga", "integer")
             ->addColumn("jumlah_stok", "integer")
-            ->addForeignKey("kode_barang", "master_barang", "kode_barang")
+            ->addForeignKey(["kode_barang_id"], "master_barang", "kode_barang")
             ->create();
 
         $this->table("master_rating", ["id" => false, "primary_key" => ["kode_rating"]])
-            ->addColumn("kode_rating", "integer", ["increment" => true])
-            ->addColumn("kode_barang", "integer")
+            ->addColumn("kode_rating", "integer", ["identity" => true])  // Auto-increment here
+            ->addColumn("kode_barang_id", "integer")
             ->addColumn("nilai", "integer")
-            ->addForeignKey("kode_barang", "master_barang", "kode_barang")
+            ->addForeignKey(["kode_barang_id"], "master_barang", "kode_barang")
             ->create();
     }
 
-    public function down() {
-        $this->table("master_user")->drop();
-        $this->table("master_rating")->drop();
-        $this->table("master_barang")->drop();
-        $this->table("master_kategori")->drop();
-        $this->table("master_gambar")->drop();
+    public function down(): void
+    {
+        $this->execute("DROP TABLE master_user");
+        $this->execute("DROP TABLE master_kategori");
+        $this->execute("DROP TABLE master_gambar");
+        $this->execute("DROP TABLE master_barang");
+        $this->execute("DROP TABLE master_rating");
     }
 }
