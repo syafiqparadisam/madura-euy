@@ -20,7 +20,7 @@ return
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => '172.16.38.166',
+            'host' => 'localhost',
             'name' => 'dbTokoMadura',
             'user' => 'root',
             'pass' => '',

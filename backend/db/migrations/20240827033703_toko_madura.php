@@ -17,7 +17,7 @@ final class TokoMadura extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change(): void
+    public function up(): void
     {
         $this->table("master_user", ["id" => false, "primary_key" => ["kode_user"]])
             ->addColumn("kode_user", "integer")
@@ -55,10 +55,18 @@ final class TokoMadura extends AbstractMigration
             ->create();
 
         $this->table("master_rating", ["id" => false, "primary_key" => ["kode_rating"]])
-            ->addColumn("kode_rating", "integer", ["identity" => true])
+            ->addColumn("kode_rating", "integer", ["increment" => true])
             ->addColumn("kode_barang", "integer")
             ->addColumn("nilai", "integer")
             ->addForeignKey("kode_barang", "master_barang", "kode_barang")
             ->create();
+    }
+
+    public function down() {
+        $this->table("master_user")->drop();
+        $this->table("master_rating")->drop();
+        $this->table("master_barang")->drop();
+        $this->table("master_kategori")->drop();
+        $this->table("master_gambar")->drop();
     }
 }
