@@ -3,7 +3,7 @@
         'name' => 'rafi/backend',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ee37c6e5e3d1163357c9842c6109786abcb7e5ef',
+        'reference' => 'ea52778bee6fcb8cf925c1f7596a18c8158a067a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -228,7 +228,7 @@
         'rafi/backend' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ee37c6e5e3d1163357c9842c6109786abcb7e5ef',
+            'reference' => 'ea52778bee6fcb8cf925c1f7596a18c8158a067a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
