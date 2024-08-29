@@ -28,10 +28,8 @@ class User extends Controller
 
 		$model = $this->model("UserModel");
 		$model->insertUser($username, $email, $password);
-		$token = Token::create();
-		$this->model("UserModel")->updateToken($token, 2);
 		
-		$response = new Response(200, "Successfully login", $token);
+		$response = new Response(200, "Successfully login");
 		echo $response->create();
 	}
 }
