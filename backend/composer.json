@@ -5,11 +5,18 @@
       "rafi\\backend\\": "app/"
     }
   },
+  "scripts": {
+    "migrate-dev": ".\\vendor\\bin\\phinx migrate -e development",
+    "rollback": ".\\vendor\\bin\\phinx rollback -e development"
+  },
   "authors": [
     {
       "name": "africanCLAM",
       "email": "rafir0532@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "robmorgan/phinx": "^0.16.2",
+    "cloudinary/cloudinary_php": "^2"
+  }
 }

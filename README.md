@@ -34,19 +34,11 @@ Ikuti langkah-langkah berikut untuk mengatur dan menjalankan proyek ini di lingk
     ```sh
      cd path\to\your\project
      ```
-5. **Install dependensi**
-    ```sh
-    npm install
-    ```
-
-6.  **Running server**
-   ```sh
-   node server.js
-   ```
-   Atau
+5. **Running Server:**
    ```sh
    npm start
    ```
-7. **Buka web browser dan akses `http://localhost:3000` untuk melihat aplikasi Anda.**
+   
+6. **Buka web browser dan akses `http://localhost:3000` untuk melihat aplikasi Anda.**
 
-8. **JIka port 3000 conflict, ubah variabel port di server.js, dan buka web browser ke `localhost:port`**
+7. **JIka port 3000 conflict, ubah variabel port di server.js, dan buka web browser ke `localhost:port`**
