@@ -1,3 +1,4 @@
+import { login } from "./login.js";
 import {
   getProductsBySearchParams,
   showBigProduct,
@@ -8,13 +9,9 @@ import Home from "./views/Home.js";
 import Products from "./views/Product.js";
 import ProductId from "./views/ProductId.js";
 import Dashboard from "./views/Dashboard.js";
-import Login from "./views/login.js";
+import Login from "./views/Login.js";
 import CreateItem from "./views/CreateItem.js";
-import {
-  showProductCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from "./product.js";
+import { showProductCart } from "./product.js";
 import SubmitItem from "./views/SubmitItem.js";
 
 const pathToRegex = (path) =>
@@ -75,16 +72,18 @@ const router = async () => {
 
 window.addEventListener("popstate", router);
 
-document.addEventListener("DOMContentLoaded",async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const $badge = $("#notification");
 
   toggleHamburgerMenu();
-
+	
   const url = window.location.pathname;
   const id = url.split("/")[2];
   if (id) {
-     showProductCart(id);
+    showProductCart(id);
   }
+
+
   const search = parseSearchURL();
   if (search) {
     getProductsBySearchParams(search);
@@ -112,9 +111,12 @@ document.addEventListener("DOMContentLoaded",async () => {
 
   router();
   $("#promoProduct").css("width", "400px");
-   await showBigProduct();
-   await showPromoProduct();
-   await showPopularProduct();
+  await showBigProduct();
+  await showPromoProduct();
+  await showPopularProduct();
+  if (url == "/login") {
+    login()
+  }
 });
 
 function parseSearchURL() {
