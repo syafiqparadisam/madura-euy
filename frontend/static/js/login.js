@@ -21,6 +21,6 @@ export async function login() {
 	}
 
 	const data = await result.json();
-  
+	
 });
 }
