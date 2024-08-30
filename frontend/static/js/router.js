@@ -1,21 +1,23 @@
+//import Views
+import Home from "./views/Home.js";
+import Products from "./views/Product.js";
+import ProductId from "./views/ProductId.js";
+import Dashboard from "./views/Dashboard.js";
+import Login from "./views/Login.js";
+import Register from "./views/Register.js";
+import CreateItem from "./views/CreateItem.js";
+import SubmitItem from "./views/SubmitItem.js";
+
+//import function and append render
 import {
   getProductsBySearchParams,
   showBigProduct,
   showPromoProduct,
   showPopularProduct,
 } from "./home.js";
-import Home from "./views/Home.js";
-import Products from "./views/Product.js";
-import ProductId from "./views/ProductId.js";
-import Dashboard from "./views/Dashboard.js";
-import Login from "./views/login.js";
-import CreateItem from "./views/CreateItem.js";
-import {
-  showProductCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from "./product.js";
-import SubmitItem from "./views/SubmitItem.js";
+import { showProductCart } from "./product.js";
+import { toLoginPage } from "./register.js";
+import { toCreateItem } from "./createItem.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -42,8 +44,9 @@ const router = async () => {
   const routes = [
     { path: "/", view: Home },
     { path: "/login", view: Login },
-    { path: "/createItem", view: CreateItem },
-    { path: "/submitItem", view: SubmitItem },
+    { path: "/register", view: Register },
+    { path: "/CreateItem", view: CreateItem },
+    { path: "/SubmitItem", view: SubmitItem },
     { path: "/dashboard", view: Dashboard },
     { path: "/product", view: Products },
     { path: "/product/:id", view: ProductId },
@@ -115,6 +118,15 @@ document.addEventListener("DOMContentLoaded",async () => {
    await showBigProduct();
    await showPromoProduct();
    await showPopularProduct();
+
+
+   if(url === "/register") {
+      toLoginPage();
+   };
+
+   if(url === "/dashboard") {
+    toCreateItem();
+   }
 });
 
 function parseSearchURL() {
@@ -170,8 +182,8 @@ $("#searchInput").on("keydown", function searchInput(e) {
   }
 });
 
-$("#createItemButton").on("click", () => {
-  window.location.href = "/create";
+$("#toLogin").on("click", () => {
+  window.location.href = "/login";
 });
 
 // Example: Increment badge value on some event (e.g., clicking the cart icon)

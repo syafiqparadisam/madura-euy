@@ -26,11 +26,11 @@ export default class extends AbstractView {
                             </div>
                             <div>
                                 <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nama Kategori</label>
-                                <select name="satuan" id="satuan" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-                                    <option value="pcs">Bahan pokok</option>
-                                    <option value="box">Bahan masak</option>
-                                    <option value="kg">alat kebersihan</option>
-                                    <option value="liter">Makanan dan minuman</option>
+                                <select name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                                    <option value="kategori">Bahan pokok</option>
+                                    <option value="kategori">Bahan masak</option>
+                                    <option value="kategori">alat kebersihan</option>
+                                    <option value="kategori">Makanan dan minuman</option>
                                 </select>
                             </div>
                             <div>
@@ -51,7 +51,7 @@ export default class extends AbstractView {
                                     <option value="liter">Liter</option>
                                 </select>
                             </div>
-                            <button type="submit" class="w-50 text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Next</button>
+                            <button type="submit" onclick="window.location.href='/SubmitItem';" class="w-50 text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Next</button>
                         </form>
                     </div>
                 </div>
