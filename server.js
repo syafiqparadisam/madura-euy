@@ -29,11 +29,11 @@ app.get("/dashboard", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 
-app.get("/CreateItem", (req, res) => {
+app.get("/createItem", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 
-app.get("/SubmitItem", (req, res) => {
+app.get("/submitItem", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "index.html"));
 });
 

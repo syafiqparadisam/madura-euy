@@ -18,6 +18,7 @@ import {
 import { showProductCart } from "./product.js";
 import { toLoginPage } from "./register.js";
 import { toCreateItem } from "./createItem.js";
+import { toRegisterPage } from "./login.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
@@ -45,8 +46,8 @@ const router = async () => {
     { path: "/", view: Home },
     { path: "/login", view: Login },
     { path: "/register", view: Register },
-    { path: "/CreateItem", view: CreateItem },
-    { path: "/SubmitItem", view: SubmitItem },
+    { path: "/createItem", view: CreateItem },
+    { path: "/submitItem", view: SubmitItem },
     { path: "/dashboard", view: Dashboard },
     { path: "/product", view: Products },
     { path: "/product/:id", view: ProductId },
@@ -126,7 +127,10 @@ document.addEventListener("DOMContentLoaded",async () => {
 
    if(url === "/dashboard") {
     toCreateItem();
-   }
+   };
+   if(url === "/login") {
+    toRegisterPage();
+   };
 });
 
 function parseSearchURL() {
