@@ -1,0 +1,10 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#searchInput {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}

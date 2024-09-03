@@ -22,43 +22,7 @@ export async function showBigProduct() {
       }
 
       $("#bigProduct").append(`
-      <a href="product/${data.id}" class="nav__link cardProducts" data-link>
-        <div class="shadow-md p-3 flex flex-col m-auto rounded-md cursor-pointer mh-25">
-          <!-- Image -->
-          <div class="flex flex-col overflow-hidden m-auto rounded-md justify-center items-center tablet:h-[120px] tablet:w-[120px] hp:w-[70px] hp:h-[70px] h-[70px] w-[70px]">
-            <img src="${
-              data.image[0]
-            }" class="rounded-md w-full h-full object-cover object-center mx-auto" />
-          </div>
-
-          <!-- Title, Stock, Rating,Location, Price -->
-          <div class="flex flex-col tablet:w-48 hp:w-32 w-24 flex-wrap mt-3">
-            <div class="flex flex-col flex-wrap">
-              <h1 class="font-bold text-wrap tablet:text-xs hp:text-md leading-1 text-sm overflow-hidden">${shortTitle(
-                data.title
-              )}</h1>
-              <p class="font-bold lh-1 tablet:text-lg hp:text-xs text-sm">${toRupiah(
-                data.price
-              )}</p>
-            </div>
-            <p class="text-sm tablet:text-md">Stock: ${data.stock}</p>
-            <div class="flex items-center">
-              <div class="flex gap-1 items-center ">
-                ${starsHtml}
-              </div>
-              <p class="ml-2 font-bold tablet:text-md hp:text-sm text-xs">${
-                data.rating
-              }.0</p>
-            </div>
-            <div class="flex gap-2 items-center">
-              <i class="bi bi-house-fill"></i>
-              <p class="font-bold tablet:text-md hp:text-sm text-xs">${
-                data.location
-              }</p>
-            </div>
-          </div>
-        </div>
-      </a>
+    
     `);
     });
   } catch (err) {}
