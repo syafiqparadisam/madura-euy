@@ -1,4 +1,3 @@
- <!--Footer-->
   <footer class="bg-gray-800 text-white pt-4 w-full relative">
     <div class="absolute w-full h-full top-0 left-0 z-0" id="particles-container">
       <div id="particles-js" class="w-full h-full"></div>
@@ -25,4 +24,3 @@
       </div>
     </div>
   </footer>
-  <!--Footer end-->

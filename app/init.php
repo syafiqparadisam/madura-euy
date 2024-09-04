@@ -1,13 +1,21 @@
 <?php
 
-namespace rafi\backend;
+namespace madura;
 require_once __DIR__ . "/../vendor/autoload.php";
-use rafi\backend\App\Router;
-use rafi\backend\Controllers\Home;
-use rafi\backend\Controllers\NotFound;
-use rafi\backend\Controllers\Upload;
-use rafi\backend\Controllers\User;
-use rafi\backend\Controllers\Product;
+use madura\App\Router;
+use madura\Controllers\Home;
+use madura\Controllers\NotFound;
+use madura\Controllers\Upload;
+use madura\Controllers\User;
+use madura\Controllers\Product;
+use Dotenv\Dotenv;
+
+$rootDir = dirname(__DIR__, 2);
+$dotenv = Dotenv::createImmutable($rootDir);
+$envFilepath = $rootDir . ".env";
+if (file_exists($envFilepath)) {
+	$dotenv->load();
+}
 
 Router::add("GET", "/", Product::class, "index");
 Router::add("GET", "/login", User::class, "loginForm");

@@ -5,29 +5,6 @@ import {
 } from "./filter.js";
 import { toRupiah, shortTitle } from "./utils.js";
 
-export async function showBigProduct() {
-  try {
-    const data = await fetch("/data.json");
-
-    const products = await data.json();
-
-    products.map((data) => {
-      let starsHtml = "";
-      for (let i = 1; i <= data.rating; i++) {
-        starsHtml += `<i class="bi bi-star-fill text-yellow-400 tablet:text-md text-xs"></i>`;
-      }
-      let totalStarsWithoutFill = 5 - data.rating;
-      for (let i = 1; i <= totalStarsWithoutFill; i++) {
-        starsHtml += `<i class="bi bi-star  tablet:text-xs text-xs"></i>`;
-      }
-
-      $("#bigProduct").append(`
-    
-    `);
-    });
-  } catch (err) {}
-}
-
 export async function showPopularProduct() {
   try {
     const data = await fetch("/data.json");

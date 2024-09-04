@@ -1,0 +1,7 @@
+vendor
+node_modules
+*.env
+infra/*
+Makefile
+README.md
+frontend

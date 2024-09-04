@@ -16,6 +16,11 @@ class TokoMadura extends AbstractSeed
      */
     public function run(): void
     {
-
+        $data = [
+            [
+                ""
+            ]
+        ];
+        $this->table("");
     }
 }

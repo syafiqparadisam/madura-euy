@@ -5,14 +5,14 @@ import {
   showPromoProduct,
   showPopularProduct,
 } from "./home.js";
-import Home from "./views/Home.js";
-import Products from "./views/Product.js";
-import ProductId from "./views/ProductId.js";
-import Dashboard from "./views/Dashboard.js";
-import Login from "./views/Login.js";
-import CreateItem from "./views/CreateItem.js";
+import Home from "../../frontend/static/js/views/Home.js";
+import Products from "../../frontend/static/js/views/Product.js";
+import ProductId from "../../frontend/static/js/views/ProductId.js";
+import Dashboard from "../../frontend/static/js/views/Dashboard.js";
+import Login from "../../frontend/static/js/views/Login.js";
+import CreateItem from "../../frontend/static/js/views/CreateItem.js";
 import { showProductCart } from "./product.js";
-import SubmitItem from "./views/SubmitItem.js";
+import SubmitItem from "../../frontend/static/js/views/SubmitItem.js";
 
 const pathToRegex = (path) =>
   new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");

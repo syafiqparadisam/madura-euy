@@ -1,8 +1,8 @@
 <?php
-namespace rafi\backend\Controllers;
-use rafi\backend\Core\Controller;
-use rafi\backend\Utils\Response;
-use rafi\backend\Utils\Token;
+namespace madura\Controllers;
+use madura\Core\Controller;
+use madura\Utils\Response;
+use madura\Utils\Token;
 
 class User extends Controller
 {
@@ -21,7 +21,7 @@ class User extends Controller
 			exit;
 		}
 
-		
+
 		// Cek apakah kunci yang diperlukan ada
 		if (!isset($data["password"]) || !isset($data["username"])) {
 			$response = new Response(400, "Username and password required", null);
@@ -43,7 +43,9 @@ class User extends Controller
 
 	}
 
-	public function loginForm() {
-		$this->views("Login/index");
+	public function loginForm()
+	{
+		echo "lah";
+		$this->views("Login/index", "");
 	}
 }

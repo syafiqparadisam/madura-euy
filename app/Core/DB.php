@@ -1,5 +1,5 @@
 <?php
-namespace rafi\backend\Core;
+namespace madura\Core;
 use PDO;
 
 class DB {

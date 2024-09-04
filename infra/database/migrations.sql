@@ -1,5 +1,4 @@
-
-CREATE TABLE master_user (
+CREATE TABLE user (
     kode_user INTEGER AUTO_INCREMENT PRIMARY KEY, 
     Username VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
@@ -9,7 +8,7 @@ CREATE TABLE master_user (
 );
  
  
-CREATE TABLE master_kategori (
+CREATE TABLE kategori (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     kode_kategori INTEGER,
     nama_kategori VARCHAR(255) NOT NULL,
@@ -17,7 +16,7 @@ CREATE TABLE master_kategori (
 );
  
 
-CREATE TABLE master_barang (
+CREATE TABLE barang (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     kode_barang INTEGER,
     kode_kategori INTEGER,
@@ -28,7 +27,7 @@ CREATE TABLE master_barang (
     FOREIGN KEY (kode_kategori) REFERENCES master_kategori(id) -- Foreign key constraint
 );
 
-CREATE TABLE master_gambar (
+CREATE TABLE gambar (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     kode_gambar INTEGER,
     kode_barang INTEGER,  -- Foreign key to master_barang
@@ -39,9 +38,9 @@ CREATE TABLE master_gambar (
     FOREIGN KEY (kode_barang) REFERENCES master_barang(id) -- Foreign key constraint,
 );
 
-  create table master_rating (
-      id INTEGER AUTO_INCREMENT PRIMARY KEY,
-      kode_rating INTEGER,
+  create table rating (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    kode_rating INTEGER,
     kode_barang INTEGER,  -- Foreign key to master_barang
     nilai INTEGER,
     FOREIGN KEY (kode_barang) REFERENCES master_barang(id) -- Foreign key constraint

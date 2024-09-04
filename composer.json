@@ -2,7 +2,7 @@
   "name": "rafi/backend",
   "autoload": {
     "psr-4": {
-      "rafi\\backend\\": "app/"
+      "madura\\": "app/"
     }
   },
   "scripts": {
@@ -17,6 +17,7 @@
   ],
   "require": {
     "robmorgan/phinx": "^0.16.2",
-    "cloudinary/cloudinary_php": "^2"
+    "cloudinary/cloudinary_php": "^2",
+    "vlucas/phpdotenv": "^5.6"
   }
 }

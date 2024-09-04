@@ -1,6 +1,6 @@
 <?php
-namespace rafi\backend\App;
-use rafi\backend\Controllers\NotFound;
+namespace madura\App;
+use madura\Controllers\NotFound;
 class Router
 {
 	public static array $routes = [];
@@ -19,7 +19,6 @@ class Router
 
 	public static function run()
 	{
-
 		$path = "/";
 		$method = $_SERVER["REQUEST_METHOD"];
 		if (isset($_SERVER["PATH_INFO"])) {
@@ -40,10 +39,9 @@ class Router
 				array_shift($variables);
 				call_user_func_array([$controller, $function], $variables);
 				return;
-			} else {
-				$controller = new NotFound();
-				$controller->index();
 			}
+			$controller = new NotFound();
+			$controller->index();
 		}
 	}
 }

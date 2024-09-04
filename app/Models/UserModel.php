@@ -1,7 +1,7 @@
 <?php
 
-namespace rafi\backend\Models;
-use rafi\backend\Core\DB;
+namespace madura\Models;
+use madura\Core\DB;
 use PDO;
 
 class UserModel extends DB

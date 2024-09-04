@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  mysqldb:
+    image: mysql:latest
+    container_name: mysqldb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbtokomadura
+      MYSQL_PASSWORD: root
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "127.0.0.1",
+          "-u",
+          "root",
+          "--password=root",
+        ]
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - mysqldb-dbgate
+    volumes:
+      - ../database/DB:/var/lib/mysql
+      # -  ../database/migrations.sql:/docker-entrypoint-initdb.d/migrations.sql
+
+  dbgui:
+    image: dbgate/dbgate:latest
+    container_name: dbgui
+    ports:
+      - 3000:3000
+    environment:
+      CONNECTIONS: con1
+      LABEL_con1: MySql
+      SERVER_con1: mysqldb
+      USER_con1: root
+      PASSWORD_con1: root
+      PORT_con1: 3306
+      ENGINE_con1: mysql@dbgate-plugin-mysql
+    networks:
+      - mysqldb-dbgate
+    depends_on:
+      -  mysqldb
+
+networks:
+  mysqldb-dbgate:

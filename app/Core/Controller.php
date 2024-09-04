@@ -1,6 +1,6 @@
 <?php
 
-namespace rafi\backend\Core;
+namespace madura\Core;
 
 class Controller
 {
@@ -16,6 +16,6 @@ class Controller
 
     public function views(string $path, $data = []) {
         extract($data);
-        require_once __DIR__ . "/../Views/$path.php";
+        require_once "/../Views/$path.php";
     }
 }

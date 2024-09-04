@@ -1,7 +1,7 @@
 <?php
-namespace rafi\backend\Models;
+namespace madura\Models;
 use PDO;
-use rafi\backend\Core\DB;
+use madura\Core\DB;
 // use PDO;
 
 class ProductModel extends DB

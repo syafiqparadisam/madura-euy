@@ -7,10 +7,10 @@
 	<title>Toko madura</title>
 
 	<!-- CSS-->
-	<link href="css/style.css" rel="stylesheet" />
+	<link href="./css/style.css" rel="stylesheet" />
 
 	<!-- Tailwind -->
-	<link href="/css/tailwind.css" type="text/tailwindcss" />
+	<link href="./css/tailwind.css" type="text/tailwindcss" />
 	<script
 		src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 	<link href="css/tailwind.css" type="text/tailwindcss" />
@@ -29,15 +29,23 @@
 </head>
 
 <body>
-	<?php include "./templates/navbar.php" ?>
-	<?php include "../app/init.php" ?>
-	<?php include "./templates/footer.php" ?>
+	<?php
+
 	
+
+	include "templates/navbar.php";
+	if ($_SERVER["PATH_INFO"] == "") {
+		include "templates/carousel.php";
+	}
+	include "/../app/init.php";
+	include "templates/footer.php";
+	?>
+
 	<!-- Script -->
-	<script src="./js/particlejs/particles.js"></>
-			<script src="./js/particlejs/demo/js/app.js"></script>
-	<script type="module" src="/static/js/router.js"></script>
-	<script type="module" src="/static/js/home.js"></script>
+	<script src="/js/particlejs/particles.js"></script>
+	<script src="js/particlejs/demo/js/app.js"></script>
+	<!-- <script type="module" src="js/router.js"></script> -->
+	<!-- <script type="module" src="js/home.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 		integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
